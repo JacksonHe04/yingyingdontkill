@@ -47,7 +47,7 @@ export default function FooterSection() {
   const designConcept = '用创新的交互方式，让信息在视觉美感中自然流动。';
 
   return (
-    <footer className="py-20 px-4 bg-gradient-to-b from-transparent to-gray-100 dark:to-gray-900">
+    <footer className="py-8 px-4 bg-gradient-to-b from-transparent to-gray-100 dark:to-gray-900">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <GlassCard>

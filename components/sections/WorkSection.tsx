@@ -15,7 +15,7 @@ export default function WorkSection({ data }: WorkSectionProps) {
   const [selectedJob, setSelectedJob] = useState<ReadmeData['work']['jobs'][number] | null>(null);
 
   return (
-    <section id="work" className="min-h-screen flex items-center justify-center py-20 px-4">
+    <section id="work" className="min-h-screen flex items-center justify-center py-8 px-4">
       <div className="max-w-6xl w-full">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

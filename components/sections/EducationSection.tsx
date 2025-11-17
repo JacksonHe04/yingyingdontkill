@@ -11,7 +11,7 @@ interface EducationSectionProps {
 
 export default function EducationSection({ data }: EducationSectionProps) {
   return (
-    <section id="education" className="min-h-screen flex items-center justify-center py-20 px-4">
+    <section id="education" className="min-h-screen flex items-center justify-center py-8 px-4">
       <div className="max-w-6xl w-full">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

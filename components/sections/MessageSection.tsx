@@ -21,7 +21,7 @@ export default function MessageSection() {
   };
 
   return (
-    <section id="message" className="min-h-screen flex items-center justify-center py-20 px-4">
+    <section id="message" className="min-h-screen flex items-center justify-center py-8 px-4">
       <div className="max-w-4xl w-full">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

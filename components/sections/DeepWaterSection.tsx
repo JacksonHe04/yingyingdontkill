@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ReadmeData } from '@/types';
 import GlassCard from '../GlassCard';
+import DeepSpaceScene from '../scenes/DeepSpaceScene';
 
 interface DeepWaterSectionProps {
   data: ReadmeData['thoughts'];
@@ -30,21 +31,7 @@ export default function DeepWaterSection({ data }: DeepWaterSectionProps) {
 
   return (
     <section id="deepwater" className="min-h-screen flex items-center justify-center py-20 px-4 relative overflow-hidden">
-      {/* 宇宙背景 */}
-      <div className="absolute inset-0 bg-gradient-to-b from-indigo-900 via-purple-900 to-black">
-        {/* 星星效果 */}
-        {Array.from({ length: 50 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `twinkle ${2 + Math.random() * 2}s infinite`,
-            }}
-          />
-        ))}
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-indigo-950 via-purple-950 to-black" />
 
       <div className="max-w-6xl w-full relative z-10">
         <motion.h2
@@ -55,14 +42,8 @@ export default function DeepWaterSection({ data }: DeepWaterSectionProps) {
           深水区
         </motion.h2>
 
-        {/* 飞行器在宇宙中占位 */}
-        <div className="mb-12 aspect-video bg-gradient-to-br from-indigo-900/50 to-purple-900/50 rounded-2xl p-8 flex items-center justify-center relative overflow-hidden border border-white/20">
-          <div className="text-center text-white z-10">
-            <p className="text-2xl mb-4">飞行器在宇宙中</p>
-            <p className="text-sm opacity-80">（待实现3D飞行器展示）</p>
-          </div>
-          {/* 占位符：飞行器 */}
-          <div className="absolute bottom-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-16 bg-gray-800 rounded-lg border-2 border-gray-600" />
+        <div className="mb-12">
+          <DeepSpaceScene />
         </div>
 
         {/* 思想观点 */}
@@ -142,14 +123,6 @@ export default function DeepWaterSection({ data }: DeepWaterSectionProps) {
           </GlassCard>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes twinkle {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 1; }
-        }
-      `}</style>
     </section>
   );
 }
-

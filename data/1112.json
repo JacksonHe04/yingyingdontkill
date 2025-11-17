@@ -1,136 +1,125 @@
 {
   "meta": {
-    "title": "All About Myself",
-    "description": "YINGYING的个人知识库 - 一个更好了解自己的文档集合",
-    "author": "YINGYING"
+    "title": "缨缨｜All About Myself",
+    "description": "关于我的一切｜缨缨的反杀从来不是错觉",
+    "author": "缨缨的反杀从来不是错觉"
   },
   "basic": {
-    "name": "YINGYING",
-    "intro": "20岁,东南大学计软智学院人工智能专业大三学生,热衷于前端开发,对页面体验敏感,自诩逻辑体系闭环完整的人",
-    "current_status": "在东南大学读大三,为学业和实习而学习,寻找暑期前端开发实习机会",
+    "name": "缨缨的反杀从来不是错觉",
+    "intro": "东南大学｜人工智能｜大四",
+    "current_status": "上学中",
     "keywords": [
       "前端开发",
-      "人工智能",
-      "音乐爱好者",
-      "自由主义",
-      "阅读"
+      "AI",
+      "音乐",
+      "自由",
+      "产品"
     ],
     "values": [
-      "利己但不损害他人利益",
-      "诚实是非常重要的",
-      "热衷于无条件帮助别人,前提是不让自己受损",
-      "DON'T GIVE A FUCK WITH THEM"
+      "诚实",
+      "Open",
+      "真诚",
+      "认真"
     ],
     "tags": [
-      "学生",
-      "开发者",
+      "开源贡献者",
+      "AI 开发者",
       "后摇爱好者",
-      "说唱迷",
+      "说唱爱好者",
       "米粉"
     ]
   },
   "life": {
     "current_city": "南京",
     "mbti": {
-      "life_mbti": "INFP/INTP",
-      "work_mbti": "ISTP"
+      "life_mbti": "INFP",
+      "work_mbti": "INTJ"
     },
-    "birth_date": "2005",
-    "zodiac_sign": "",
+    "birth_date": "2004-11-04",
+    "zodiac_sign": "天蝎座",
     "habits": [
-      "16+8轻断食作息",
-      "0-8:00起床",
-      "12:00 Brunch",
-      "8:00 Dinner"
+      "16+8 轻断食",
+      "经常熬夜"
     ],
     "diet": {
       "favorite_food": [
-        "面包",
-        "小米南瓜粥",
-        "食堂面食",
-        "梅园食堂自选菜"
+        "烤肉",
+        "烧烤",
+        "711",
+        "生菜"
       ],
       "favorite_drinks": [
-        "",
-        "",
-        ""
+        "元气森林",
+        "东方树叶",
+        "可口可乐"
       ]
     }
   },
   "experience": {
     "experience": [
       {
+        "city": "北京",
+        "date": "2025-08-2025-10",
+        "description": "短暂的实习生活"
+      },
+      {
         "city": "南京",
-        "date": "2022-present",
-        "description": "在东南大学就读人工智能专业"
+        "date": "2022-08-现在",
+        "description": "长长的坡道..."
       },
       {
         "city": "青阳",
-        "date": "2019-2022",
-        "description": "青阳中学高中阶段,大量阅读和接触后摇音乐的时期"
-      },
-      {
-        "city": "安徽/江浙沪/湖南/北京/山东",
-        "date": "少年时期",
-        "description": "多地旅行经历"
+        "date": "2004-2022",
+        "description": "九华后山，成年前的岁月鸿沟"
       }
     ]
   },
   "education": {
     "schools": [
       {
-        "degree": "本科在读",
+        "degree": "本科",
         "major": "人工智能",
         "institution": "东南大学计软智学院",
-        "start_date": "2022",
-        "end_date": "2026"
+        "start_date": "2022-08",
+        "end_date": "2026-07"
       }
     ],
     "undergraduate_major": "人工智能",
-    "undergraduate_advisor": ""
+    "undergraduate_advisor": "乔伊果/周德宇"
   },
   "work": {
-    "current_job": "学生 - 寻找前端开发实习",
+    "current_job": "学生",
     "jobs": [
       {
-        "company_name": "",
-        "position": "",
-        "position_type": "",
-        "start_date": "",
-        "end_date": "",
-        "products_responsible_for": "",
-        "job_summary": "",
-        "work_output": ""
-      },
-      {
-        "company_name": "",
-        "position": "",
-        "position_type": "",
-        "start_date": "",
-        "end_date": "",
-        "products_responsible_for": "",
-        "job_summary": "",
-        "work_output": ""
+        "company_name": "智谱 AI",
+        "position": "大模型产品实习生",
+        "position_type": "实习",
+        "start_date": "2025-08",
+        "end_date": "2025-11",
+        "products_responsible_for": "企业级 MaaS 平台",
+        "job_summary": "负责智谱企业级 MaaS（Model-as-a-Service）平台 V2.3 的产品功能设计，该平台是一款面向企业级用户的全生命周期大模型管理与服务平台，覆盖模型微调、模型评测、模型服务等核心功能，助力企业快速构建私有化部署的大模型平台。",
+        "work_output": "1. 核心模块设计：主导企业级 MaaS V2.3 模型路由、用量统计、日志挖掘三大核心模块的产品功能设计，清晰定义业务逻辑、数据流与 GUI 设计，并产出6份完整的产品需求文档。2. 原型构建迭代：基于 AI Coding 构建可交互原型，与前端、后端、测试、Infra 等多个研发团队紧密协作，就需求细节进行 100+ 沟通与决策，并持续迭代确保 PRD 与原型图精准落地。3. 交互规范重构：全面重构平台错误信息与删除操作的弹窗交互规范，统一 10+ 场景的弹窗文案、展示逻辑与用户引导路径，使之成为平台交互设计标准，显著提升用户体验。4. 产品走查优化：完成企业级 MaaS V2.2 全链路产品走查，提出 30+ 条涵盖设计稿一致性、业务逻辑、权限控制、文案规范性等维度的优化建议，并即时推动研发响应与修正。5. 前沿方向调研：开展 Agent Infra 与 Sandbox 技术预研，深度剖析 Manus、Lindy 等 Agent 产品的沙盒应用场景，并参考 E2B、阿里云 AgentBay 等 GUI 竞品的设计理念，输出调研报告并面向多部门进行汇报分享，为 Q4 产品规划提供关键输入。6. 文档体系建设：建立产品内部知识库，撰写企业级 MaaS 产品说明书、模型实验室使用实践等 4 份标准文档；同时主导企业级 MaaS 软件著作权申请全流程，协调多层团队整理代码文件与技术文档，成功提交国家版权局并获受理。"
       }
     ],
     "work_preferences": [
-      "前端开发",
-      "对页面体验和审美有高要求",
-      "重视界面的美感",
-      "可能转向产品经理"
+      "Title",
+      "岗位",
+      "业务",
+      "薪资",
+      "氛围"
     ]
   },
   "development": {
     "skills": {
       "tech_stack": [
-        "HTML",
-        "CSS",
         "JavaScript",
         "TypeScript",
-        "Vue",
         "React",
         "Next.js",
-        "Vite"
+        "Vite",
+        "Vue",
+        "Tailwind CSS",
+        "NestJS"
       ],
       "expertise": [
         "前端开发",
@@ -140,60 +129,75 @@
     },
     "projects": [
       {
-        "project_name": "",
-        "github": "",
-        "link": "",
-        "description": "",
+        "project_name": "QuAIz",
+        "github": "https://github.com/JacksonHe04/QuAIz",
+        "link": "https://quaiz-ai.vercel.app/",
+        "description": "基于生成式大模型的试卷生成与批改系统。面向学习场景的 AI 产品，构建从需求调研到 MVP 的完整 AI 产品闭环。通过 OpenAI SDK 封装 BigModel API 输出结构化 JSON，支持 6 种题型的端到端生成、答题与批改，实现教育场景的 AI 产品化落地。",
         "tech_stack": [
-          "",
-          "",
-          ""
+          "React",
+          "TypeScript",
+          "Vite",
+          "Tailwind CSS"
         ],
         "role": [
-          "",
-          "",
-          ""
+          "产品",
+          "设计",
+          "开发"
         ],
-        "start_date": "",
-        "end_date": "",
+        "start_date": "2025-07",
+        "end_date": "2025-07",
         "report_link": ""
       },
       {
-        "project_name": "",
-        "github": "",
-        "link": "",
-        "description": "",
+        "project_name": "东南大学 PALM 实验室研究生招生系统",
+        "github": "https://github.com/JacksonHe04/palm-ams",
+        "link": "https://palm-ams.vercel.app/",
+        "description": "面向真实业务场景的 B 端产品，历时 8 个月深度主导需求分析、产品设计与开发迭代。通过与实验室导师和学生的持续沟通，构建完整的招生管理产品体系，目前申请数量达 1000+ 人次，较往年增长 71%，获得用户高度认可。",
         "tech_stack": [
-          "",
-          "",
-          ""
+          "Vue 3",
+          "TypeScript",
+          "Element Plus",
+          "Django",
+          "MySQL"
         ],
         "role": [
-          "",
-          ""
+          "产品",
+          "UI 设计",
+          "前端开发",
+          "后端开发",
+          "用户运营"
         ],
-        "start_date": "",
-        "end_date": "",
+        "start_date": "2024-10",
+        "end_date": "2025-05",
         "report_link": ""
       }
     ],
     "dev_tools": [
       {
-        "name": "Notion",
+        "name": "TRAE",
         "link": "",
-        "comment": "衬线体太好看了,更适合面对自己这一主题的文档",
+        "comment": "",
         "tags": [
-          "笔记",
-          "知识管理"
+          "IDE",
+          "AI Coding"
         ]
       },
       {
-        "name": "GitHub",
+        "name": "Codex",
         "link": "",
-        "comment": "代码版本管理",
+        "comment": "",
         "tags": [
-          "开发",
-          "协作"
+          "IDE",
+          "AI Coding"
+        ]
+      },
+      {
+        "name": "Cursor",
+        "link": "",
+        "comment": "",
+        "tags": [
+          "IDE",
+          "AI Coding"
         ]
       }
     ]
@@ -203,23 +207,34 @@
       {
         "name": "Notion",
         "link": "",
-        "intro": "界面审美断层,衬线体好看",
+        "intro": "断层审美，衬线体",
         "tags": [
+          "文档",
           "笔记",
-          "生产力"
+          "知识管理",
+          "个人系统"
         ]
       },
       {
-        "name": "",
+        "name": "Vercel",
         "link": "",
         "intro": "",
         "tags": [
-          "",
-          ""
+          "静态部署",
+          "Serverless"
         ]
       }
     ],
     "recommended_products": [
+      {
+        "name": "Raycast",
+        "link": "",
+        "intro": "",
+        "tags": [
+          "快捷键",
+          "效率工具"
+        ]
+      },
       {
         "name": "",
         "link": "",
@@ -240,32 +255,32 @@
       }
     ],
     "my_hardware": {
-      "phone": "小米系列",
-      "computer": "",
-      "tablet": "",
-      "smartwatch": "",
+      "phone": "小米 13",
+      "computer": "MacBook Air M2",
+      "tablet": "小米平板 5",
+      "smartwatch": "小米手环 8",
       "headphones": [
-        "",
-        ""
+        "漫步者 W820NB",
+        "233621 Hush"
       ]
     },
     "favorite_brands": [
       {
         "name": "小米",
         "link": "",
-        "intro": "多年米粉,初中就是移动设备迷",
+        "intro": "",
         "tags": [
-          "数码",
-          "手机"
+          "智能硬件",
+          "物联网"
         ]
       },
       {
         "name": "Apple",
         "link": "",
-        "intro": "有钱会买苹果设备",
+        "intro": "",
         "tags": [
-          "数码",
-          "高端"
+          "智能硬件",
+          "审美"
         ]
       }
     ]
@@ -381,62 +396,118 @@
   },
   "music": {
     "albums": [
-      {
-        "name": "",
-        "artist": "",
-        "link": "",
-        "comment": ""
-      }
+      {"name": "Give Me Beauty... Or Give Me Death!", "artist": "", "link": "", "comment": ""},
+      {"name": "Hurtbreak Wonderland", "artist": "", "link": "", "comment": ""},
+      {"name": "岁月鸿沟", "artist": "", "link": "", "comment": ""},
+      {"name": "Who You Are Is Not Enough", "artist": "", "link": "", "comment": ""},
+      {"name": "越冬のマーチ", "artist": "", "link": "", "comment": ""},
+      {"name": "incarnations", "artist": "", "link": "", "comment": ""},
+      {"name": "Departure Songs", "artist": "", "link": "", "comment": ""},
+      {"name": "Pax", "artist": "", "link": "", "comment": ""},
+      {"name": "zatracenie", "artist": "", "link": "", "comment": ""},
+      {"name": "音乐会", "artist": "", "link": "", "comment": ""},
+      {"name": "Lift Your Skinny Fists Like Antennas to Heaven", "artist": "", "link": "", "comment": ""},
+      {"name": "Hymn to the Immortal Wind", "artist": "", "link": "", "comment": ""},
+      {"name": "疼痛部", "artist": "", "link": "", "comment": ""},
+      {"name": "Takk...", "artist": "", "link": "", "comment": ""},
+      {"name": "Burning", "artist": "", "link": "", "comment": ""}
     ],
     "songs": [
-      {
-        "name": "",
-        "artist": "",
-        "album": "",
-        "link": "",
-        "comment": ""
-      }
+      {"name": "Final Touch / Hidden Agenda", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "100 Years of Choke", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "退屈しのぎ", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "怯懦", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Pax", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "玫瑰色的你", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Volga", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Nic 09", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "岁月鸿沟", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Challenger part 1 - Flight", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "小公主", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Bless Yourself Bleed", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "W.A.N.D.Y", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Rua", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "silent roar", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Golden Threads from the Sun", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Hello Scotland", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Lights Frightened The Captain", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "dear grandma", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Storytelling", "artist": "", "album": "", "link": "", "comment": ""}
     ],
     "musicians": [
-      {
-        "name": "Coldplay",
-        "region": "英国",
-        "link": "",
-        "comment": "听得最多的摇滚乐队"
-      },
-      {
-        "name": "草东没有派对",
-        "region": "台湾",
-        "link": "",
-        "comment": "初中时接触"
-      }
+      {"name": "Ef", "region": "瑞典", "link": "", "comment": ""},
+      {"name": "World's End Girlfriend", "region": "日本", "link": "", "comment": ""},
+      {"name": "惘闻", "region": "中国", "link": "", "comment": ""},
+      {"name": "Loro's", "region": "", "link": "", "comment": ""},
+      {"name": "mol-74", "region": "日本", "link": "", "comment": ""},
+      {"name": "超级市场", "region": "中国", "link": "", "comment": ""},
+      {"name": "MONO", "region": "日本", "link": "", "comment": ""},
+      {"name": "苏打绿", "region": "台湾", "link": "", "comment": ""},
+      {"name": "tokyo blue weeps", "region": "日本", "link": "", "comment": ""},
+      {"name": "Coldplay", "region": "英国", "link": "", "comment": ""},
+      {"name": "时过夏末", "region": "中国", "link": "", "comment": ""},
+      {"name": "Matryoshka", "region": "日本", "link": "", "comment": ""},
+      {"name": "Sigur Rós", "region": "冰岛", "link": "", "comment": ""},
+      {"name": "张悬", "region": "台湾", "link": "", "comment": ""},
+      {"name": "We Lost The Sea", "region": "澳大利亚", "link": "", "comment": ""}
     ]
   },
   "hiphop": {
     "albums": [
-      {
-        "name": "",
-        "artist": "",
-        "link": "",
-        "comment": ""
-      }
+      {"name": "那小子真帅", "artist": "", "link": "", "comment": ""},
+      {"name": "MOSLOS", "artist": "", "link": "", "comment": ""},
+      {"name": "在雨后醒来", "artist": "", "link": "", "comment": ""},
+      {"name": "亚特兰蒂斯", "artist": "", "link": "", "comment": ""},
+      {"name": "牛窝坑之子", "artist": "", "link": "", "comment": ""},
+      {"name": "真假美猴王", "artist": "", "link": "", "comment": ""},
+      {"name": "KID", "artist": "", "link": "", "comment": ""},
+      {"name": "八方来财", "artist": "", "link": "", "comment": ""},
+      {"name": "KILL THOME II", "artist": "", "link": "", "comment": ""},
+      {"name": "成嶋亮", "artist": "", "link": "", "comment": ""},
+      {"name": "藏族小伙子", "artist": "", "link": "", "comment": ""},
+      {"name": "钱专", "artist": "", "link": "", "comment": ""},
+      {"name": "黄沙", "artist": "", "link": "", "comment": ""},
+      {"name": "冰冷热带鱼", "artist": "", "link": "", "comment": ""},
+      {"name": "SAINT JUICE", "artist": "", "link": "", "comment": ""}
     ],
     "songs": [
-      {
-        "name": "",
-        "artist": "",
-        "album": "",
-        "link": "",
-        "comment": ""
-      }
+      {"name": "ON MY WAY", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "憎", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Young thug", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "声色犬马", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "钱是我的家人", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "睡不着", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "月光", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "人为财死 鸟为食亡", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "关关难", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "四川街尼", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "小镇的孩子", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "你说", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Opps", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Room", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "愚人码头", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "闪电", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "讲令话", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "巧合", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "悬浮术II", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "重要的事情说三遍", "artist": "", "album": "", "link": "", "comment": ""}
     ],
     "musicians": [
-      {
-        "name": "五人组",
-        "region": "中国",
-        "link": "",
-        "comment": "最喜欢的说唱组合之一"
-      }
+      {"name": "SASIOVERLXRD", "region": "中国", "link": "", "comment": ""},
+      {"name": "艾志恒Asen", "region": "中国", "link": "", "comment": ""},
+      {"name": "李佳隆", "region": "中国", "link": "", "comment": ""},
+      {"name": "mac ova seas", "region": "中国", "link": "", "comment": ""},
+      {"name": "THOME", "region": "中国", "link": "", "comment": ""},
+      {"name": "JinJiBeWater_隼", "region": "中国", "link": "", "comment": ""},
+      {"name": "GALI", "region": "中国", "link": "", "comment": ""},
+      {"name": "揽佬SKAI ISYOURGOD", "region": "中国", "link": "", "comment": ""},
+      {"name": "RICHNOMADIC", "region": "中国", "link": "", "comment": ""},
+      {"name": "河南说唱之神", "region": "中国", "link": "", "comment": ""},
+      {"name": "MULA SAKEE", "region": "中国", "link": "", "comment": ""},
+      {"name": "连麻Swimming", "region": "中国", "link": "", "comment": ""},
+      {"name": "Vansdaddy", "region": "中国", "link": "", "comment": ""},
+      {"name": "Echo", "region": "中国", "link": "", "comment": ""},
+      {"name": "陈一豪Clear", "region": "中国", "link": "", "comment": ""}
     ]
   },
   "events": {
@@ -516,14 +587,14 @@
   },
   "notifications": [
     {
-      "date": "2025-06-11",
-      "text": "短期任务截止日期",
-      "type": "deadline"
+      "date": "2025-11-17",
+      "text": "页面样式",
+      "type": "Git"
     },
     {
-      "date": "",
+      "date": "2025-11-12",
       "text": "",
-      "type": ""
+      "type": "Git"
     }
   ]
 }

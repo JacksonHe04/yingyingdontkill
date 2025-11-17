@@ -4,13 +4,21 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ReadmeData } from '@/types';
 import GlassCard from '../GlassCard';
+import ProductDeskScene from '../scenes/ProductDeskScene';
 
 interface ProductsSectionProps {
   data: ReadmeData['products'];
 }
 
+type ProductDetail = {
+  title: string;
+  description: string;
+  tags?: string[];
+  link?: string;
+};
+
 export default function ProductsSection({ data }: ProductsSectionProps) {
-  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<ProductDetail | null>(null);
 
   return (
     <section id="products" className="min-h-screen flex items-center justify-center py-20 px-4">
@@ -24,16 +32,13 @@ export default function ProductsSection({ data }: ProductsSectionProps) {
           产品
         </motion.h2>
 
-        {/* 书桌场景占位 */}
-        <div className="mb-12 aspect-video bg-gradient-to-br from-amber-600 to-amber-800 rounded-2xl p-8 flex items-center justify-center relative overflow-hidden">
-          <div className="text-center text-white z-10">
-            <p className="text-2xl mb-4">书桌场景</p>
-            <p className="text-sm opacity-80">（待实现3D书桌展示）</p>
-          </div>
-          {/* 占位符：手机和MacBook */}
-          <div className="absolute bottom-8 left-1/4 w-16 h-24 bg-gray-800 rounded-lg border-2 border-gray-600 transform rotate-12" />
-          <div className="absolute bottom-8 right-1/4 w-32 h-20 bg-gray-900 rounded-lg border-2 border-gray-700" />
-        </div>
+        <ProductDeskScene
+          favoriteProducts={data.favorite_products}
+          recommendedProducts={data.recommended_products}
+          hardware={data.my_hardware}
+          activeTitle={selectedProduct?.title ?? null}
+          onSelect={setSelectedProduct}
+        />
 
         {/* 最爱产品 */}
         <div className="mb-12">
@@ -50,7 +55,14 @@ export default function ProductsSection({ data }: ProductsSectionProps) {
                 <GlassCard
                   hover
                   className="cursor-pointer"
-                  onClick={() => setSelectedProduct(`favorite-${idx}`)}
+                  onClick={() =>
+                    setSelectedProduct({
+                      title: product.name,
+                      description: product.intro,
+                      tags: product.tags,
+                      link: product.link,
+                    })
+                  }
                 >
                   <h4 className="font-semibold mb-2">{product.name}</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
@@ -87,7 +99,14 @@ export default function ProductsSection({ data }: ProductsSectionProps) {
                 <GlassCard
                   hover
                   className="cursor-pointer"
-                  onClick={() => setSelectedProduct(`recommended-${idx}`)}
+                  onClick={() =>
+                    setSelectedProduct({
+                      title: product.name,
+                      description: product.intro,
+                      tags: product.tags,
+                      link: product.link,
+                    })
+                  }
                 >
                   <h4 className="font-semibold mb-2">{product.name}</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
@@ -196,10 +215,21 @@ export default function ProductsSection({ data }: ProductsSectionProps) {
                 >
                   ✕
                 </button>
-                <h3 className="text-2xl font-bold mb-4">产品详情</h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  （产品详情内容）
+                <h3 className="text-2xl font-bold mb-2">{selectedProduct.title}</h3>
+                <p className="text-sm text-gray-500 mb-4">
+                  {selectedProduct.tags?.join(' · ')}
                 </p>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">{selectedProduct.description}</p>
+                {selectedProduct.link && (
+                  <a
+                    href={selectedProduct.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline"
+                  >
+                    打开链接 →
+                  </a>
+                )}
               </motion.div>
             </motion.div>
           )}
@@ -208,4 +238,3 @@ export default function ProductsSection({ data }: ProductsSectionProps) {
     </section>
   );
 }
-

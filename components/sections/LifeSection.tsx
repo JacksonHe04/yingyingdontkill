@@ -1,6 +1,4 @@
 'use client';
-
-import { motion } from 'framer-motion';
 import { ReadmeData } from '@/types';
 import GlassCard from '../GlassCard';
 
@@ -12,15 +10,6 @@ export default function LifeSection({ data }: LifeSectionProps) {
   return (
     <section id="life" className="min-h-screen flex items-center justify-center py-20 px-4">
       <div className="max-w-4xl w-full space-y-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl font-bold mb-8"
-        >
-          生活
-        </motion.h2>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <GlassCard>
             <h3 className="font-semibold mb-4">基本信息</h3>
@@ -88,4 +77,3 @@ export default function LifeSection({ data }: LifeSectionProps) {
     </section>
   );
 }
-

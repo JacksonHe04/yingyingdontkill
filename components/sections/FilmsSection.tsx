@@ -4,13 +4,22 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ReadmeData } from '@/types';
 import GlassCard from '../GlassCard';
+import FilmDeskScene from '../scenes/FilmDeskScene';
 
 interface FilmsSectionProps {
   data: ReadmeData['films'];
 }
 
+type FilmDetail = {
+  title: string;
+  description: string;
+  director: string;
+  country: string;
+  link: string;
+};
+
 export default function FilmsSection({ data }: FilmsSectionProps) {
-  const [selectedFilm, setSelectedFilm] = useState<number | null>(null);
+  const [selectedFilm, setSelectedFilm] = useState<FilmDetail | null>(null);
 
   return (
     <section id="films" className="min-h-screen flex items-center justify-center py-20 px-4">
@@ -24,17 +33,19 @@ export default function FilmsSection({ data }: FilmsSectionProps) {
           影片
         </motion.h2>
 
-        {/* 书桌场景占位 */}
-        <div className="mb-12 aspect-video bg-gradient-to-br from-purple-600 to-indigo-800 rounded-2xl p-8 flex items-center justify-center relative overflow-hidden">
-          <div className="text-center text-white z-10">
-            <p className="text-2xl mb-4">书桌上的碟片</p>
-            <p className="text-sm opacity-80">（待实现3D书桌展示）</p>
-          </div>
-          {/* 占位符：碟片 */}
-          <div className="absolute bottom-8 left-1/3 w-20 h-20 bg-gray-800 rounded-full border-4 border-gray-600" />
-          <div className="absolute bottom-8 left-1/2 w-20 h-20 bg-gray-800 rounded-full border-4 border-gray-600" />
-          <div className="absolute bottom-8 right-1/3 w-20 h-20 bg-gray-800 rounded-full border-4 border-gray-600" />
-        </div>
+        <FilmDeskScene
+          films={data.films}
+          activeTitle={selectedFilm?.title ?? null}
+          onSelect={(detail) =>
+            setSelectedFilm({
+              title: detail.title,
+              description: detail.description,
+              director: detail.director,
+              country: detail.country,
+              link: detail.link ?? '',
+            })
+          }
+        />
 
         {/* 影片 */}
         <div className="mb-12">
@@ -51,7 +62,15 @@ export default function FilmsSection({ data }: FilmsSectionProps) {
                 <GlassCard
                   hover
                   className="cursor-pointer"
-                  onClick={() => setSelectedFilm(idx)}
+                  onClick={() =>
+                    setSelectedFilm({
+                      title: film.name,
+                      description: film.comment,
+                      director: film.director,
+                      country: film.country,
+                      link: film.link,
+                    })
+                  }
                 >
                   <h4 className="font-semibold mb-1">{film.name}</h4>
                   <p className="text-sm text-gray-500 mb-2">
@@ -101,7 +120,7 @@ export default function FilmsSection({ data }: FilmsSectionProps) {
 
         {/* 影片详情弹窗 */}
         <AnimatePresence>
-          {selectedFilm !== null && (
+          {selectedFilm && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -122,23 +141,21 @@ export default function FilmsSection({ data }: FilmsSectionProps) {
                 >
                   ✕
                 </button>
-                <h3 className="text-2xl font-bold mb-2">
-                  {data.films[selectedFilm].name}
-                </h3>
+                <h3 className="text-2xl font-bold mb-2">{selectedFilm.title}</h3>
                 <p className="text-gray-500 mb-4">
-                  {data.films[selectedFilm].director} · {data.films[selectedFilm].country}
+                  {selectedFilm.director} · {selectedFilm.country}
                 </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  {data.films[selectedFilm].comment}
-                </p>
-                <a
-                  href={data.films[selectedFilm].link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:underline"
-                >
-                  查看详情 →
-                </a>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">{selectedFilm.description}</p>
+                {selectedFilm.link && (
+                  <a
+                    href={selectedFilm.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:underline"
+                  >
+                    查看详情 →
+                  </a>
+                )}
               </motion.div>
             </motion.div>
           )}
@@ -147,4 +164,3 @@ export default function FilmsSection({ data }: FilmsSectionProps) {
     </section>
   );
 }
-

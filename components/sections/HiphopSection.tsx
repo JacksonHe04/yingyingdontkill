@@ -34,6 +34,10 @@ export default function HiphopSection({ data }: HiphopSectionProps) {
                 transition={{ delay: idx * 0.1 }}
               >
                 <GlassCard hover>
+                  <div className="flex items-center justify-between text-[10px] uppercase tracking-wide text-gray-400 mb-1">
+                    <span>No.{String(idx + 1).padStart(2, '0')}</span>
+                    <span>Album</span>
+                  </div>
                   <div className="aspect-square bg-gradient-to-br from-orange-400 to-red-400 rounded-lg mb-2" />
                   <h4 className="font-semibold text-sm mb-1 truncate">{album.name}</h4>
                   <p className="text-xs text-gray-500 truncate">{album.artist}</p>
@@ -59,6 +63,10 @@ export default function HiphopSection({ data }: HiphopSectionProps) {
                 transition={{ delay: idx * 0.1 }}
               >
                 <GlassCard hover>
+                  <div className="flex items-center justify-between text-[10px] uppercase tracking-wide text-gray-400 mb-1">
+                    <span>No.{String(idx + 1).padStart(2, '0')}</span>
+                    <span>Song</span>
+                  </div>
                   <div className="aspect-square bg-gradient-to-br from-yellow-400 to-orange-400 rounded-lg mb-2" />
                   <h4 className="font-semibold text-sm mb-1 truncate">{song.name}</h4>
                   <p className="text-xs text-gray-500 truncate">{song.artist}</p>
@@ -82,6 +90,10 @@ export default function HiphopSection({ data }: HiphopSectionProps) {
                 transition={{ delay: idx * 0.1 }}
               >
                 <GlassCard hover>
+                  <div className="flex items-center justify-between text-[10px] uppercase tracking-wide text-gray-400 mb-1">
+                    <span>No.{String(idx + 1).padStart(2, '0')}</span>
+                    <span>Artist</span>
+                  </div>
                   <div className="aspect-square bg-gradient-to-br from-pink-400 to-rose-400 rounded-lg mb-2" />
                   <h4 className="font-semibold text-sm mb-1 truncate">{musician.name}</h4>
                   <p className="text-xs text-gray-500 truncate">{musician.region}</p>
@@ -97,4 +109,3 @@ export default function HiphopSection({ data }: HiphopSectionProps) {
     </section>
   );
 }
-

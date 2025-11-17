@@ -4,13 +4,22 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ReadmeData } from '@/types';
 import GlassCard from '../GlassCard';
+import ReadingDeskScene from '../scenes/ReadingDeskScene';
 
 interface ReadingSectionProps {
   data: ReadmeData['reading'];
 }
 
+type BookDetail = {
+  title: string;
+  description: string;
+  author: string;
+  country: string;
+  link: string;
+};
+
 export default function ReadingSection({ data }: ReadingSectionProps) {
-  const [selectedBook, setSelectedBook] = useState<number | null>(null);
+  const [selectedBook, setSelectedBook] = useState<BookDetail | null>(null);
 
   return (
     <section id="reading" className="min-h-screen flex items-center justify-center py-20 px-4">
@@ -24,17 +33,19 @@ export default function ReadingSection({ data }: ReadingSectionProps) {
           读书
         </motion.h2>
 
-        {/* 书桌场景占位 */}
-        <div className="mb-12 aspect-video bg-gradient-to-br from-amber-600 to-amber-800 rounded-2xl p-8 flex items-center justify-center relative overflow-hidden">
-          <div className="text-center text-white z-10">
-            <p className="text-2xl mb-4">书桌上的书</p>
-            <p className="text-sm opacity-80">（待实现3D书桌展示）</p>
-          </div>
-          {/* 占位符：书籍 */}
-          <div className="absolute bottom-8 left-1/3 w-12 h-16 bg-red-600 rounded transform rotate-12" />
-          <div className="absolute bottom-8 left-1/2 w-12 h-16 bg-blue-600 rounded transform -rotate-12" />
-          <div className="absolute bottom-8 right-1/3 w-12 h-16 bg-green-600 rounded transform rotate-6" />
-        </div>
+        <ReadingDeskScene
+          books={data.books}
+          activeTitle={selectedBook?.title ?? null}
+          onSelect={(detail) =>
+            setSelectedBook({
+              title: detail.title,
+              description: detail.description,
+              author: detail.author,
+              country: detail.country,
+              link: detail.link ?? '',
+            })
+          }
+        />
 
         {/* 书籍 */}
         <div className="mb-12">
@@ -51,7 +62,15 @@ export default function ReadingSection({ data }: ReadingSectionProps) {
                 <GlassCard
                   hover
                   className="cursor-pointer"
-                  onClick={() => setSelectedBook(idx)}
+                  onClick={() =>
+                    setSelectedBook({
+                      title: book.name,
+                      description: book.comment,
+                      author: book.author,
+                      country: book.country,
+                      link: book.link,
+                    })
+                  }
                 >
                   <h4 className="font-semibold mb-1">{book.name}</h4>
                   <p className="text-sm text-gray-500 mb-2">
@@ -101,7 +120,7 @@ export default function ReadingSection({ data }: ReadingSectionProps) {
 
         {/* 书籍详情弹窗 */}
         <AnimatePresence>
-          {selectedBook !== null && (
+          {selectedBook && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -122,23 +141,21 @@ export default function ReadingSection({ data }: ReadingSectionProps) {
                 >
                   ✕
                 </button>
-                <h3 className="text-2xl font-bold mb-2">
-                  {data.books[selectedBook].name}
-                </h3>
+                <h3 className="text-2xl font-bold mb-2">{selectedBook.title}</h3>
                 <p className="text-gray-500 mb-4">
-                  {data.books[selectedBook].author} · {data.books[selectedBook].country}
+                  {selectedBook.author} · {selectedBook.country}
                 </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  {data.books[selectedBook].comment}
-                </p>
-                <a
-                  href={data.books[selectedBook].link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:underline"
-                >
-                  查看详情 →
-                </a>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">{selectedBook.description}</p>
+                {selectedBook.link && (
+                  <a
+                    href={selectedBook.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:underline"
+                  >
+                    查看详情 →
+                  </a>
+                )}
               </motion.div>
             </motion.div>
           )}
@@ -147,4 +164,3 @@ export default function ReadingSection({ data }: ReadingSectionProps) {
     </section>
   );
 }
-

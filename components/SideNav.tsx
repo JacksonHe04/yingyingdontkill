@@ -6,7 +6,6 @@ import { scrollToElement } from '@/lib/utils';
 
 const sections = [
   { id: 'basic', label: '基础' },
-  { id: 'life', label: '生活' },
   { id: 'experience', label: '经历' },
   { id: 'education', label: '教育' },
   { id: 'work', label: '工作' },
@@ -47,9 +46,10 @@ export default function SideNav() {
     <motion.nav
       initial={{ x: -100 }}
       animate={{ x: 0 }}
-      className="fixed left-2 lg:left-4 top-1/2 -translate-y-1/2 z-40 hidden md:block"
+      className="fixed left-2 lg:left-4 -translate-y-1/2 z-40 hidden md:block"
+      style={{ top: 'calc(50% + 40px)' }}
     >
-      <div className="backdrop-blur-md bg-white/10 dark:bg-black/10 rounded-2xl p-4 border border-white/20">
+      <div className="rounded-2xl border border-white/30 bg-white/30 backdrop-blur-xl p-4">
         <div className="flex flex-col gap-2">
           {sections.map((section) => (
             <button
@@ -76,4 +76,3 @@ export default function SideNav() {
     </motion.nav>
   );
 }
-

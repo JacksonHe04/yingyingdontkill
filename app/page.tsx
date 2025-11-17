@@ -26,11 +26,11 @@ export default function Home() {
   const data = getReadmeData();
 
   return (
-    <main className="relative">
+    <main className="relative min-h-screen">
       <TopNav data={data} />
       <SideNav />
       
-      <div className="pt-16">
+      <div className="pt-16 lg:pl-32 xl:pl-40 2xl:pl-48 transition-all duration-300">
         <BasicSection data={data.basic} />
         <LifeSection data={data.life} />
         <ExperienceSection data={data.experience} />

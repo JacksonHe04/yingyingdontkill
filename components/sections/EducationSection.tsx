@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ReadmeData } from '@/types';
 import GlassCard from '../GlassCard';
+import EducationScene from '../scenes/EducationScene';
 
 interface EducationSectionProps {
   data: ReadmeData['education'];
@@ -22,13 +23,7 @@ export default function EducationSection({ data }: EducationSectionProps) {
         </motion.h2>
 
         <div className="relative">
-          {/* 2D 横屏游戏场景占位 */}
-          <div className="aspect-video bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl p-8 flex items-center justify-center">
-            <div className="text-center text-white">
-              <p className="text-2xl mb-4">2D 横屏游戏场景</p>
-              <p className="text-sm opacity-80">（待实现游戏化展示）</p>
-            </div>
-          </div>
+          <EducationScene schools={data.schools} />
 
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
             {data.schools.map((school, idx) => (
@@ -61,4 +56,3 @@ export default function EducationSection({ data }: EducationSectionProps) {
     </section>
   );
 }
-

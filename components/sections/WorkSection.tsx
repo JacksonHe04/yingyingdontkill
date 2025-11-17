@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ReadmeData } from '@/types';
 import GlassCard from '../GlassCard';
+import WorkScene from '../scenes/WorkScene';
 
 interface WorkSectionProps {
   data: ReadmeData['work'];
@@ -30,13 +31,7 @@ export default function WorkSection({ data }: WorkSectionProps) {
         </motion.p>
 
         <div className="relative mb-12">
-          {/* 2D 横屏游戏场景占位 */}
-          <div className="aspect-video bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl p-8 flex items-center justify-center">
-            <div className="text-center text-white">
-              <p className="text-2xl mb-4">2D 横屏游戏场景</p>
-              <p className="text-sm opacity-80">（待实现游戏化展示）</p>
-            </div>
-          </div>
+          <WorkScene jobs={data.jobs} />
         </div>
 
         <div className="space-y-6">
@@ -95,4 +90,3 @@ export default function WorkSection({ data }: WorkSectionProps) {
     </section>
   );
 }
-

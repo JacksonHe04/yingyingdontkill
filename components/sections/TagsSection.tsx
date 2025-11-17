@@ -44,31 +44,34 @@ export default function TagsSection({ data }: TagsSectionProps) {
           标签墙
         </motion.h2>
 
-        <div className="overflow-x-auto">
-          <div className="flex flex-wrap gap-3 justify-center min-w-max">
-            {allTags.map((tag, idx) => (
-              <motion.button
-                key={idx}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.02 }}
-                onClick={() => toggleTag(tag)}
-                className={`px-4 py-2 rounded-full text-sm transition-all ${
-                  activeTags.has(tag)
-                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white scale-110'
-                    : 'bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/20 hover:bg-white/20'
-                }`}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {tag}
-              </motion.button>
-            ))}
-          </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 auto-rows-[140px]">
+          {allTags.map((tag, idx) => (
+            <motion.button
+              key={idx}
+              initial={{ opacity: 0, y: 20, rotate: -2 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.02 }}
+              onClick={() => toggleTag(tag)}
+              className={`flex h-full flex-col justify-between rounded-2xl border px-4 py-3 text-left transition-all ${
+                activeTags.has(tag)
+                  ? 'border-purple-400 bg-gradient-to-br from-purple-500/30 to-pink-500/20 text-white shadow-lg shadow-purple-300/40'
+                  : 'border-white/40 bg-white/40 backdrop-blur text-gray-700 hover:border-purple-200 hover:shadow-lg'
+              }`}
+              whileHover={{ y: -6 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <span className="text-[10px] uppercase tracking-wide text-gray-400">
+                Tag {String(idx + 1).padStart(2, '0')}
+              </span>
+              <p className="text-lg font-semibold leading-tight">{tag}</p>
+              {activeTags.has(tag) && (
+                <span className="text-xs text-purple-200">已点亮</span>
+              )}
+            </motion.button>
+          ))}
         </div>
       </div>
     </section>
   );
 }
-

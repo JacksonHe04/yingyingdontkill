@@ -160,7 +160,7 @@ function DeviceMesh({
 
   if (type === 'laptop') {
     return (
-      <group position={position} rotation={rotation} onClick={handleClick} className="cursor-pointer">
+      <group position={position} rotation={rotation} onClick={handleClick}>
         <mesh>
           <boxGeometry args={[3, 0.12, 2.2]} />
           <meshStandardMaterial
@@ -193,7 +193,6 @@ function DeviceMesh({
         rotation={rotation}
         scale={scale}
         onClick={handleClick}
-        className="cursor-pointer"
       >
         <mesh>
           <boxGeometry args={[0.7, 0.05, 1.5]} />
@@ -222,7 +221,6 @@ function DeviceMesh({
       rotation={rotation}
       scale={scale}
       onClick={handleClick}
-      className="cursor-pointer"
     >
       <mesh>
         <boxGeometry args={[1.3, 0.05, 1.8]} />

@@ -1,0 +1,529 @@
+{
+  "meta": {
+    "title": "All About Myself",
+    "description": "YINGYING的个人知识库 - 一个更好了解自己的文档集合",
+    "author": "YINGYING"
+  },
+  "basic": {
+    "name": "YINGYING",
+    "intro": "20岁,东南大学计软智学院人工智能专业大三学生,热衷于前端开发,对页面体验敏感,自诩逻辑体系闭环完整的人",
+    "current_status": "在东南大学读大三,为学业和实习而学习,寻找暑期前端开发实习机会",
+    "keywords": [
+      "前端开发",
+      "人工智能",
+      "音乐爱好者",
+      "自由主义",
+      "阅读"
+    ],
+    "values": [
+      "利己但不损害他人利益",
+      "诚实是非常重要的",
+      "热衷于无条件帮助别人,前提是不让自己受损",
+      "DON'T GIVE A FUCK WITH THEM"
+    ],
+    "tags": [
+      "学生",
+      "开发者",
+      "后摇爱好者",
+      "说唱迷",
+      "米粉"
+    ]
+  },
+  "life": {
+    "current_city": "南京",
+    "mbti": {
+      "life_mbti": "INFP/INTP",
+      "work_mbti": "ISTP"
+    },
+    "birth_date": "2005",
+    "zodiac_sign": "",
+    "habits": [
+      "16+8轻断食作息",
+      "0-8:00起床",
+      "12:00 Brunch",
+      "8:00 Dinner"
+    ],
+    "diet": {
+      "favorite_food": [
+        "面包",
+        "小米南瓜粥",
+        "食堂面食",
+        "梅园食堂自选菜"
+      ],
+      "favorite_drinks": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "experience": {
+    "experience": [
+      {
+        "city": "南京",
+        "date": "2022-present",
+        "description": "在东南大学就读人工智能专业"
+      },
+      {
+        "city": "青阳",
+        "date": "2019-2022",
+        "description": "青阳中学高中阶段,大量阅读和接触后摇音乐的时期"
+      },
+      {
+        "city": "安徽/江浙沪/湖南/北京/山东",
+        "date": "少年时期",
+        "description": "多地旅行经历"
+      }
+    ]
+  },
+  "education": {
+    "schools": [
+      {
+        "degree": "本科在读",
+        "major": "人工智能",
+        "institution": "东南大学计软智学院",
+        "start_date": "2022",
+        "end_date": "2026"
+      }
+    ],
+    "undergraduate_major": "人工智能",
+    "undergraduate_advisor": ""
+  },
+  "work": {
+    "current_job": "学生 - 寻找前端开发实习",
+    "jobs": [
+      {
+        "company_name": "",
+        "position": "",
+        "position_type": "",
+        "start_date": "",
+        "end_date": "",
+        "products_responsible_for": "",
+        "job_summary": "",
+        "work_output": ""
+      },
+      {
+        "company_name": "",
+        "position": "",
+        "position_type": "",
+        "start_date": "",
+        "end_date": "",
+        "products_responsible_for": "",
+        "job_summary": "",
+        "work_output": ""
+      }
+    ],
+    "work_preferences": [
+      "前端开发",
+      "对页面体验和审美有高要求",
+      "重视界面的美感",
+      "可能转向产品经理"
+    ]
+  },
+  "development": {
+    "skills": {
+      "tech_stack": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "TypeScript",
+        "Vue",
+        "React",
+        "Next.js",
+        "Vite"
+      ],
+      "expertise": [
+        "前端开发",
+        "Web界面设计",
+        "用户体验"
+      ]
+    },
+    "projects": [
+      {
+        "project_name": "",
+        "github": "",
+        "link": "",
+        "description": "",
+        "tech_stack": [
+          "",
+          "",
+          ""
+        ],
+        "role": [
+          "",
+          "",
+          ""
+        ],
+        "start_date": "",
+        "end_date": "",
+        "report_link": ""
+      },
+      {
+        "project_name": "",
+        "github": "",
+        "link": "",
+        "description": "",
+        "tech_stack": [
+          "",
+          "",
+          ""
+        ],
+        "role": [
+          "",
+          ""
+        ],
+        "start_date": "",
+        "end_date": "",
+        "report_link": ""
+      }
+    ],
+    "dev_tools": [
+      {
+        "name": "Notion",
+        "link": "",
+        "comment": "衬线体太好看了,更适合面对自己这一主题的文档",
+        "tags": [
+          "笔记",
+          "知识管理"
+        ]
+      },
+      {
+        "name": "GitHub",
+        "link": "",
+        "comment": "代码版本管理",
+        "tags": [
+          "开发",
+          "协作"
+        ]
+      }
+    ]
+  },
+  "products": {
+    "favorite_products": [
+      {
+        "name": "Notion",
+        "link": "",
+        "intro": "界面审美断层,衬线体好看",
+        "tags": [
+          "笔记",
+          "生产力"
+        ]
+      },
+      {
+        "name": "",
+        "link": "",
+        "intro": "",
+        "tags": [
+          "",
+          ""
+        ]
+      }
+    ],
+    "recommended_products": [
+      {
+        "name": "",
+        "link": "",
+        "intro": "",
+        "tags": [
+          "",
+          ""
+        ]
+      },
+      {
+        "name": "",
+        "link": "",
+        "intro": "",
+        "tags": [
+          "",
+          ""
+        ]
+      }
+    ],
+    "my_hardware": {
+      "phone": "小米系列",
+      "computer": "",
+      "tablet": "",
+      "smartwatch": "",
+      "headphones": [
+        "",
+        ""
+      ]
+    },
+    "favorite_brands": [
+      {
+        "name": "小米",
+        "link": "",
+        "intro": "多年米粉,初中就是移动设备迷",
+        "tags": [
+          "数码",
+          "手机"
+        ]
+      },
+      {
+        "name": "Apple",
+        "link": "",
+        "intro": "有钱会买苹果设备",
+        "tags": [
+          "数码",
+          "高端"
+        ]
+      }
+    ]
+  },
+  "creation": {
+    "videos": [
+      {
+        "series": "",
+        "title": "",
+        "video_link": "",
+        "podcast_link": ""
+      },
+      {
+        "series": "",
+        "title": "",
+        "video_link": "",
+        "podcast_link": ""
+      }
+    ],
+    "articles": [
+      {
+        "title": "",
+        "link": "",
+        "excerpt": ""
+      },
+      {
+        "title": "",
+        "link": "",
+        "excerpt": ""
+      }
+    ],
+    "speeches": [
+      {
+        "speech_name": "",
+        "link": "",
+        "outline_doc": "",
+        "presentation_link": ""
+      }
+    ],
+    "mottos": [
+      "DON'T GIVE A FUCK WITH THEM",
+      "不要让语言的暗示,一语成谶",
+      "JUST DO WHAT I WANT"
+    ],
+    "quotes": [
+      "他人即地狱 - 让-保罗·萨特",
+      "Outside of a dog, a book is man's best friend. Inside of a dog, it's too dark to read. - Groucho Marx"
+    ]
+  },
+  "reading": {
+    "books": [
+      {
+        "name": "1Q84",
+        "author": "村上春树",
+        "country": "日本",
+        "link": "",
+        "comment": ""
+      },
+      {
+        "name": "挪威的森林",
+        "author": "村上春树",
+        "country": "日本",
+        "link": "",
+        "comment": "高中时期阅读"
+      }
+    ],
+    "authors": [
+      {
+        "name": "村上春树",
+        "country": "日本",
+        "link": "",
+        "comment": ""
+      },
+      {
+        "name": "三岛由纪夫",
+        "country": "日本",
+        "link": "",
+        "comment": ""
+      }
+    ]
+  },
+  "films": {
+    "films": [
+      {
+        "name": "",
+        "director": "",
+        "country": "",
+        "link": "",
+        "comment": ""
+      },
+      {
+        "name": "",
+        "director": "",
+        "country": "",
+        "link": "",
+        "comment": ""
+      }
+    ],
+    "directors": [
+      {
+        "name": "",
+        "country": "",
+        "link": "",
+        "comment": ""
+      },
+      {
+        "name": "",
+        "country": "",
+        "link": "",
+        "comment": ""
+      }
+    ]
+  },
+  "music": {
+    "albums": [
+      {
+        "name": "",
+        "artist": "",
+        "link": "",
+        "comment": ""
+      }
+    ],
+    "songs": [
+      {
+        "name": "",
+        "artist": "",
+        "album": "",
+        "link": "",
+        "comment": ""
+      }
+    ],
+    "musicians": [
+      {
+        "name": "Coldplay",
+        "region": "英国",
+        "link": "",
+        "comment": "听得最多的摇滚乐队"
+      },
+      {
+        "name": "草东没有派对",
+        "region": "台湾",
+        "link": "",
+        "comment": "初中时接触"
+      }
+    ]
+  },
+  "hiphop": {
+    "albums": [
+      {
+        "name": "",
+        "artist": "",
+        "link": "",
+        "comment": ""
+      }
+    ],
+    "songs": [
+      {
+        "name": "",
+        "artist": "",
+        "album": "",
+        "link": "",
+        "comment": ""
+      }
+    ],
+    "musicians": [
+      {
+        "name": "五人组",
+        "region": "中国",
+        "link": "",
+        "comment": "最喜欢的说唱组合之一"
+      }
+    ]
+  },
+  "events": {
+    "performances": [
+      {
+        "type": "",
+        "name": "",
+        "date": "",
+        "genre": "",
+        "location": ""
+      }
+    ]
+  },
+  "contact": {
+    "contact_info": [
+      {
+        "method_name": "Email",
+        "content": "213222749@seu.edu.cn"
+      },
+      {
+        "method_name": "",
+        "content": ""
+      }
+    ],
+    "platform_accounts": [
+      {
+        "platform_name": "",
+        "username": "",
+        "homepage_link": ""
+      },
+      {
+        "platform_name": "",
+        "username": "",
+        "homepage_link": ""
+      }
+    ]
+  },
+  "thoughts": {
+    "personal_philosophy": [
+      "价值观首先是利己的,但绝不会损害他人的利益,包括说谎,诚实是非常重要的事情",
+      "热衷于无条件地帮助别人,前提是只要不让自己受损"
+    ],
+    "industry_views": [
+      "认为华为是数码市场的毒瘤,但不否认其对移动端影像水平的深远影响"
+    ],
+    "ideology": [
+      "坚定的自由主义",
+      "对于具体命题有具体的态度",
+      "作为理工科学生,需要系统性了解意识形态方面的知识"
+    ],
+    "life_elements": [
+      "音乐",
+      "阅读",
+      "开发",
+      "思考"
+    ],
+    "macro_vision": [
+      "更好地了解自己,不被这个快速的时代迷失"
+    ],
+    "personal_vision": [
+      "找到暑期前端开发实习,完成学业"
+    ],
+    "qa": [
+      {
+        "question": "为什么选择Notion而不是飞书和语雀?",
+        "answer": "飞书和语雀固然在理性上是更好的选择,但Notion的界面审美实在断层,衬线体太好看了",
+        "source": "All About Myself",
+        "date": "2025"
+      },
+      {
+        "question": "I人是否真的喜欢独处?",
+        "answer": "I人缺乏在多位陌生人面前主动沟通的能力,这让其无法在沟通中保持自信。但这不意味着不需要人际关系",
+        "source": "Relationships",
+        "date": ""
+      }
+    ]
+  },
+  "notifications": [
+    {
+      "date": "2025-06-11",
+      "text": "短期任务截止日期",
+      "type": "deadline"
+    },
+    {
+      "date": "",
+      "text": "",
+      "type": ""
+    }
+  ]
+}

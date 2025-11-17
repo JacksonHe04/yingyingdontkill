@@ -1,5 +1,5 @@
 import { ReadmeData } from '@/types';
-import readmeData from '@/data/readme.json';
+import readmeData from '@/data/1117.json';
 
 // 读取数据
 export function getReadmeData(): ReadmeData {

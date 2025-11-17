@@ -123,8 +123,9 @@
       ],
       "expertise": [
         "前端开发",
-        "Web界面设计",
-        "用户体验"
+        "组件抽象",
+        "样式规范",
+        "TS 全栈"
       ]
     },
     "projects": [
@@ -236,21 +237,21 @@
         ]
       },
       {
-        "name": "",
-        "link": "",
-        "intro": "",
+        "name": "产品2",
+        "link": "链接2",
+        "intro": "产品介绍",
         "tags": [
-          "",
-          ""
+          "效率工具",
+          "生产力"
         ]
       },
       {
-        "name": "",
-        "link": "",
-        "intro": "",
+        "name": "产品3",
+        "link": "链接3",
+        "intro": "产品介绍",
         "tags": [
-          "",
-          ""
+          "效率工具",
+          "生产力"
         ]
       }
     ],
@@ -288,151 +289,178 @@
   "creation": {
     "videos": [
       {
-        "series": "",
-        "title": "",
-        "video_link": "",
-        "podcast_link": ""
+        "series": "系列1",
+        "title": "标题1",
+        "video_link": "链接1",
+        "podcast_link": "链接2"
       },
       {
-        "series": "",
-        "title": "",
-        "video_link": "",
-        "podcast_link": ""
+        "series": "系列2",
+        "title": "标题2",
+        "video_link": "链接2",
+        "podcast_link": "链接2"
       }
     ],
     "articles": [
       {
-        "title": "",
-        "link": "",
-        "excerpt": ""
+        "title": "标题1",
+        "link": "链接1",
+        "excerpt": "摘抄..."
       },
       {
-        "title": "",
-        "link": "",
-        "excerpt": ""
+        "title": "标题2",
+        "link": "链接2", 
+        "excerpt": "摘抄..."
       }
     ],
     "speeches": [
       {
-        "speech_name": "",
-        "link": "",
-        "outline_doc": "",
-        "presentation_link": ""
+        "speech_name": "演讲1",
+        "link": "链接1",
+        "outline_doc": "链接2",
+        "presentation_link": "演示文稿链接"
       }
     ],
     "mottos": [
-      "DON'T GIVE A FUCK WITH THEM",
-      "不要让语言的暗示,一语成谶",
-      "JUST DO WHAT I WANT"
+      "It's Now or Never",
+      "座右铭2",
+      "座右铭3"
     ],
     "quotes": [
-      "他人即地狱 - 让-保罗·萨特",
-      "Outside of a dog, a book is man's best friend. Inside of a dog, it's too dark to read. - Groucho Marx"
+      "经典语录1",
+      "经典语录2"
     ]
   },
   "reading": {
     "books": [
       {
-        "name": "1Q84",
-        "author": "村上春树",
-        "country": "日本",
-        "link": "",
-        "comment": ""
+        "name": "书籍名称1",
+        "author": "作者1",
+        "country": "国家1",
+        "link": "链接1",
+        "comment": "评语1"
       },
       {
         "name": "挪威的森林",
         "author": "村上春树",
         "country": "日本",
-        "link": "",
-        "comment": "高中时期阅读"
+        "link": "链接2",
+        "comment": "评语2"
       }
     ],
     "authors": [
       {
         "name": "村上春树",
         "country": "日本",
-        "link": "",
-        "comment": ""
+        "link": "链接3",
+        "comment": "评语3"
       },
       {
-        "name": "三岛由纪夫",
-        "country": "日本",
-        "link": "",
-        "comment": ""
+        "name": "作家4",
+        "country": "国家4",
+        "link": "链接4",
+        "comment": "评语4"
       }
     ]
   },
   "films": {
     "films": [
       {
-        "name": "",
-        "director": "",
-        "country": "",
-        "link": "",
-        "comment": ""
+        "name": "电影名称1",
+        "director": "导演1",
+        "country": "国家1",
+        "link": "链接4",
+        "comment": "评语4"
       },
       {
-        "name": "",
-        "director": "",
-        "country": "",
-        "link": "",
-        "comment": ""
+        "name": "电影名称2",
+        "director": "导演2",
+        "country": "国家2",
+        "link": "链接5",
+        "comment": "评语5"
+      },
+      {
+        "name": "电影名称3",
+        "director": "导演3",
+        "country": "国家3",
+        "link": "链接6",
+        "comment": "评语6"
+      },
+      {
+        "name": "电影名称4",
+        "director": "导演4",
+        "country": "国家4",
+        "link": "链接7",
+        "comment": "评语7"
+      },
+      {
+        "name": "电影名称5",
+        "director": "导演5",
+        "country": "国家5",
+        "link": "链接8",
+        "comment": "评语8"
       }
     ],
     "directors": [
       {
-        "name": "",
-        "country": "",
-        "link": "",
-        "comment": ""
+        "name": "导演1",
+        "country": "国家1",
+        "link": "链接8",
+        "comment": "评语8"
       },
       {
-        "name": "",
-        "country": "",
-        "link": "",
-        "comment": ""
+        "name": "导演2",
+        "country": "国家2",
+        "link": "链接9",
+        "comment": "评语9"
+      },
+      {
+        "name": "导演3",
+        "country": "国家3",
+        "link": "链接10",
+        "comment": "评语10"
       }
     ]
   },
   "music": {
     "albums": [
-      {"name": "Give Me Beauty... Or Give Me Death!", "artist": "", "link": "", "comment": ""},
-      {"name": "Hurtbreak Wonderland", "artist": "", "link": "", "comment": ""},
-      {"name": "岁月鸿沟", "artist": "", "link": "", "comment": ""},
-      {"name": "Who You Are Is Not Enough", "artist": "", "link": "", "comment": ""},
-      {"name": "越冬のマーチ", "artist": "", "link": "", "comment": ""},
-      {"name": "incarnations", "artist": "", "link": "", "comment": ""},
-      {"name": "Departure Songs", "artist": "", "link": "", "comment": ""},
-      {"name": "Pax", "artist": "", "link": "", "comment": ""},
-      {"name": "zatracenie", "artist": "", "link": "", "comment": ""},
-      {"name": "音乐会", "artist": "", "link": "", "comment": ""},
-      {"name": "Lift Your Skinny Fists Like Antennas to Heaven", "artist": "", "link": "", "comment": ""},
-      {"name": "Hymn to the Immortal Wind", "artist": "", "link": "", "comment": ""},
-      {"name": "疼痛部", "artist": "", "link": "", "comment": ""},
-      {"name": "Takk...", "artist": "", "link": "", "comment": ""},
-      {"name": "Burning", "artist": "", "link": "", "comment": ""}
+      {"name": "Give Me Beauty... Or Give Me Death!", "artist": "Ef", "link": "", "comment": ""},
+      {"name": "Hurtbreak Wonderland", "artist": "World End Girlfriend", "link": "", "comment": ""},
+      {"name": "岁月鸿沟", "artist": "惘闻", "link": "", "comment": ""},
+      {"name": "Who You Are Is Not Enough", "artist": "Athletics", "link": "", "comment": ""},
+      {"name": "越冬のマーチ", "artist": "mol-74", "link": "", "comment": ""},
+      {"name": "incarnations", "artist": "tokyo blue weeps", "link": "", "comment": ""},
+      {"name": "Departure Songs", "artist": "We Lost The Sea", "link": "", "comment": ""},
+      {"name": "Pax", "artist": "Loro's", "link": "", "comment": ""},
+      {"name": "zatracenie", "artist": "Matryoshka", "link": "", "comment": ""},
+      {"name": "音乐会", "artist": "超级市场", "link": "", "comment": ""},
+      {"name": "Lift Your Skinny Fists Like Antennas to Heaven", "artist": "Godspeed You! Black Emperor", "link": "", "comment": ""},
+      {"name": "Hymn to the Immortal Wind", "artist": "MONO", "link": "", "comment": ""},
+      {"name": "疼痛部", "artist": "v是兔子wishtoday", "link": "", "comment": ""},
+      {"name": "Takk...", "artist": "Sigur Ros", "link": "", "comment": ""},
+      {"name": "Burning", "artist": "曾轶可", "link": "", "comment": ""}
     ],
     "songs": [
-      {"name": "Final Touch / Hidden Agenda", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "100 Years of Choke", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "退屈しのぎ", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "怯懦", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "Pax", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "玫瑰色的你", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "Volga", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "Nic 09", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "岁月鸿沟", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "Challenger part 1 - Flight", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "小公主", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "Bless Yourself Bleed", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "W.A.N.D.Y", "artist": "", "album": "", "link": "", "comment": ""},
+      {"name": "Final Touch / Hidden Agenda", "artist": "Ef", "album": "", "link": "", "comment": ""},
+      {"name": "100 Years of Choke", "artist": "World End Girlfriend", "album": "", "link": "", "comment": ""},
+      {"name": "退屈しのぎ", "artist": "蘑菇帝国", "album": "", "link": "", "comment": ""},
+      {"name": "怯懦", "artist": "v是兔子wishtoday", "album": "", "link": "", "comment": ""},
+      {"name": "Pax", "artist": "Loro's", "album": "", "link": "", "comment": ""},
+      {"name": "玫瑰色的你", "artist": "张悬", "album": "", "link": "", "comment": ""},
+      {"name": "Volga", "artist": "Maybeshewill", "album": "", "link": "", "comment": ""},
+      {"name": "Nic 09", "artist": "Camping", "album": "", "link": "", "comment": ""},
+      {"name": "岁月鸿沟", "artist": "惘闻", "album": "", "link": "", "comment": ""},
+      {"name": "Challenger part 1 - Flight", "artist": "We Lost The Sea", "album": "", "link": "", "comment": ""},
+      {"name": "小公主", "artist": "晨曦光廊", "album": "", "link": "", "comment": ""},
+      {"name": "Bless Yourself Bleed", "artist": "World End Girlfriend", "album": "", "link": "", "comment": ""},
+      {"name": "W.A.N.D.Y", "artist": "Loro's", "album": "", "link": "", "comment": ""},
       {"name": "Rua", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "silent roar", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "Golden Threads from the Sun", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "Hello Scotland", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "Lights Frightened The Captain", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "dear grandma", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "Storytelling", "artist": "", "album": "", "link": "", "comment": ""}
+      {"name": "silent roar", "artist": "euphoria", "album": "", "link": "", "comment": ""},
+      {"name": "Golden Threads from the Sun", "artist": "Yndi Halda", "album": "", "link": "", "comment": ""},
+      {"name": "Hello Scotland", "artist": "Ef", "album": "", "link": "", "comment": ""},
+      {"name": "Lights Frightened The Captain", "artist": "Star As Lights", "album": "", "link": "", "comment": ""},
+      {"name": "dear grandma", "artist": "tokyo blue weeps", "album": "", "link": "", "comment": ""},
+      {"name": "Storytelling", "artist": "World End Girlfriend", "album": "", "link": "", "comment": ""}
     ],
     "musicians": [
       {"name": "Ef", "region": "瑞典", "link": "", "comment": ""},
@@ -454,43 +482,43 @@
   },
   "hiphop": {
     "albums": [
-      {"name": "那小子真帅", "artist": "", "link": "", "comment": ""},
-      {"name": "MOSLOS", "artist": "", "link": "", "comment": ""},
-      {"name": "在雨后醒来", "artist": "", "link": "", "comment": ""},
-      {"name": "亚特兰蒂斯", "artist": "", "link": "", "comment": ""},
-      {"name": "牛窝坑之子", "artist": "", "link": "", "comment": ""},
-      {"name": "真假美猴王", "artist": "", "link": "", "comment": ""},
-      {"name": "KID", "artist": "", "link": "", "comment": ""},
-      {"name": "八方来财", "artist": "", "link": "", "comment": ""},
-      {"name": "KILL THOME II", "artist": "", "link": "", "comment": ""},
-      {"name": "成嶋亮", "artist": "", "link": "", "comment": ""},
-      {"name": "藏族小伙子", "artist": "", "link": "", "comment": ""},
-      {"name": "钱专", "artist": "", "link": "", "comment": ""},
-      {"name": "黄沙", "artist": "", "link": "", "comment": ""},
-      {"name": "冰冷热带鱼", "artist": "", "link": "", "comment": ""},
-      {"name": "SAINT JUICE", "artist": "", "link": "", "comment": ""}
+      {"name": "那小子真帅", "artist": "SASIOVERLXRD", "link": "", "comment": ""},
+      {"name": "MOSLOS", "artist": "mac ova seas", "link": "", "comment": ""},
+      {"name": "在雨后醒来", "artist": "Asen艾志恒", "link": "", "comment": ""},
+      {"name": "亚特兰蒂斯", "artist": "GALI", "link": "", "comment": ""},
+      {"name": "牛窝坑之子", "artist": "Vansdaddy", "link": "", "comment": ""},
+      {"name": "真假美猴王", "artist": "连麻Swimming/JinJiBeWater_隼", "link": "", "comment": ""},
+      {"name": "KID", "artist": "KID", "link": "", "comment": ""},
+      {"name": "八方来财", "artist": "揽佬SKAI ISYOURGOD", "link": "", "comment": ""},
+      {"name": "KILL THOME II", "artist": "THOME", "link": "", "comment": ""},
+      {"name": "成嶋亮", "artist": "SASIOVERLXRD", "link": "", "comment": ""},
+      {"name": "藏族小伙子", "artist": "RICHNOMADIC", "link": "", "comment": ""},
+      {"name": "钱专", "artist": "河南说唱之神", "link": "", "comment": ""},
+      {"name": "黄沙", "artist": "Echo", "link": "", "comment": ""},
+      {"name": "冰冷热带鱼", "artist": "SASIOVERLXRD/JinJiBeWater_隼/RICHNOMADIC", "link": "", "comment": ""},
+      {"name": "SAINT JUICE", "artist": "MULA SAKEE", "link": "", "comment": ""}
     ],
     "songs": [
-      {"name": "ON MY WAY", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "憎", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "Young thug", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "声色犬马", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "钱是我的家人", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "睡不着", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "月光", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "人为财死 鸟为食亡", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "关关难", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "四川街尼", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "小镇的孩子", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "你说", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "Opps", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "Room", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "愚人码头", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "闪电", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "讲令话", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "巧合", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "悬浮术II", "artist": "", "album": "", "link": "", "comment": ""},
-      {"name": "重要的事情说三遍", "artist": "", "album": "", "link": "", "comment": ""}
+      {"name": "ON MY WAY", "artist": "mac ova seas", "album": "", "link": "", "comment": ""},
+      {"name": "憎", "artist": "SASIOVERLXRD", "album": "", "link": "", "comment": ""},
+      {"name": "Young thug", "artist": "SASIOVERLXRD/JinJiBeWater_隼/RICHNOMADIC", "album": "", "link": "", "comment": ""},
+      {"name": "声色犬马", "artist": "SASIOVERLXRD/连麻Swimming/JinJiBeWater_隼/RICHNOMADIC", "album": "", "link": "", "comment": ""},
+      {"name": "钱是我的家人", "artist": "SASIOVERLXRD", "album": "", "link": "", "comment": ""},
+      {"name": "睡不着", "artist": "Asen艾志恒", "album": "", "link": "", "comment": ""},
+      {"name": "月光", "artist": "THOME", "album": "", "link": "", "comment": ""},
+      {"name": "人为财死 鸟为食亡", "artist": "mac ova seas", "album": "", "link": "", "comment": ""},
+      {"name": "关关难", "artist": "Echo", "album": "", "link": "", "comment": ""},
+      {"name": "四川街尼", "artist": "SASIOVERLXRD", "album": "", "link": "", "comment": ""},
+      {"name": "小镇的孩子", "artist": "Asen艾志恒", "album": "", "link": "", "comment": ""},
+      {"name": "你说", "artist": "卡力老虎/杰西马吉拉", "album": "", "link": "", "comment": ""},
+      {"name": "Opps", "artist": "SASIOVERLXRD/刀脚", "album": "", "link": "", "comment": ""},
+      {"name": "Room", "artist": "李佳隆", "album": "", "link": "", "comment": ""},
+      {"name": "愚人码头", "artist": "GAI周延/刘聪KeyL/功夫胖KUNGFUPEN/盛宇D-SHINE", "album": "", "link": "", "comment": ""},
+      {"name": "闪电", "artist": "mac ova seas/李佳隆", "album": "", "link": "", "comment": ""},
+      {"name": "讲令话", "artist": "揽佬SKAI ISYOURGOD", "album": "", "link": "", "comment": ""},
+      {"name": "巧合", "artist": "MULA SAKEE/Asen艾志恒", "album": "", "link": "", "comment": ""},
+      {"name": "悬浮术II", "artist": "GALI", "album": "", "link": "", "comment": ""},
+      {"name": "重要的事情说三遍", "artist": "jackzebra", "album": "", "link": "", "comment": ""}
     ],
     "musicians": [
       {"name": "SASIOVERLXRD", "region": "中国", "link": "", "comment": ""},
@@ -512,63 +540,88 @@
   },
   "events": {
     "performances": [
+      { 
+        "type": "音乐节",
+        "name": "北京 MDSK 音乐节",
+        "date": "2025-10-03",
+        "genre": "Hip-Hop",
+        "location": "北京"
+      },
       {
-        "type": "",
-        "name": "",
-        "date": "",
-        "genre": "",
-        "location": ""
+        "type": "演唱会",
+        "name": "五人组《拳贵》巡回演唱会",
+        "date": "2025-07-05",
+        "genre": "Hip-Hop",
+        "location": "上海"
+      },
+      {
+        "type": "音乐节",
+        "name": "扬州银河左岸音乐节",
+        "date": "2025-03-29",
+        "genre": "Hip-Hop",
+        "location": "江苏·扬州"
+      },
+      {
+        "type": "音乐节",
+        "name": "越位音乐节",
+        "date": "2023-11-04",
+        "genre": "后摇滚",
+        "location": "浙江·湖州"
       }
     ]
   },
   "contact": {
     "contact_info": [
       {
-        "method_name": "Email",
-        "content": "213222749@seu.edu.cn"
+        "method_name": "邮箱",
+        "content": "yingyingdontkill@gmail.com"
       },
       {
-        "method_name": "",
-        "content": ""
+        "method_name": "微信",
+        "content": "FRONTENDYUANFANG"
       }
     ],
     "platform_accounts": [
       {
-        "platform_name": "",
-        "username": "",
+        "platform_name": "哔哩哔哩",
+        "username": "小缨缨的B站",
         "homepage_link": ""
       },
       {
-        "platform_name": "",
-        "username": "",
+        "platform_name": "小红书",
+        "username": "小缨缨",
         "homepage_link": ""
       }
     ]
   },
   "thoughts": {
     "personal_philosophy": [
-      "价值观首先是利己的,但绝不会损害他人的利益,包括说谎,诚实是非常重要的事情",
-      "热衷于无条件地帮助别人,前提是只要不让自己受损"
+      "个人哲学1",
+      "个人哲学2"
     ],
     "industry_views": [
-      "认为华为是数码市场的毒瘤,但不否认其对移动端影像水平的深远影响"
+      "行业观点1",
+      "行业观点2"
     ],
     "ideology": [
-      "坚定的自由主义",
-      "对于具体命题有具体的态度",
-      "作为理工科学生,需要系统性了解意识形态方面的知识"
+      "社会自由主义",
+      "社会民主主义",
+      "福利主义",
+      "实践温和派"
     ],
     "life_elements": [
       "音乐",
-      "阅读",
+      "AI",
       "开发",
-      "思考"
+      "游戏"
     ],
     "macro_vision": [
-      "更好地了解自己,不被这个快速的时代迷失"
+      "宏观愿景1",
+      "宏观愿景2"
     ],
     "personal_vision": [
-      "找到暑期前端开发实习,完成学业"
+      "个人愿景1",
+      "个人愿景2"
     ],
     "qa": [
       {
@@ -581,19 +634,19 @@
         "question": "I人是否真的喜欢独处?",
         "answer": "I人缺乏在多位陌生人面前主动沟通的能力,这让其无法在沟通中保持自信。但这不意味着不需要人际关系",
         "source": "Relationships",
-        "date": ""
+        "date": "2025"
       }
     ]
   },
   "notifications": [
     {
       "date": "2025-11-17",
-      "text": "页面样式",
+      "text": "更新创新设计，UI 再度优化。By Codex",
       "type": "Git"
     },
     {
       "date": "2025-11-12",
-      "text": "",
+      "text": "网站创建！By Cursor",
       "type": "Git"
     }
   ]

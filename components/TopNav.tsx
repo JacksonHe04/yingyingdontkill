@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Twitter, Bell, MapPin } from 'lucide-react';
+import { Github, Twitter, Bell, MapPin, RefreshCw } from 'lucide-react';
 import { ReadmeData } from '@/types';
 import {
   calculateAge,
@@ -44,6 +44,7 @@ export default function TopNav({ data }: TopNavProps) {
   const [showLevelModal, setShowLevelModal] = useState(false);
   const [showMobilePanel, setShowMobilePanel] = useState(false);
   const [notificationsViewed, setNotificationsViewed] = useState(0);
+  const [isRefreshingLocation, setIsRefreshingLocation] = useState(false);
   const notificationsStorageKey = 'yingying-notifications-viewed';
 
   const age = calculateAge(data.life.birth_date);
@@ -65,17 +66,27 @@ export default function TopNav({ data }: TopNavProps) {
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    if (cityCoords) {
-      getUserLocation().then((userLoc) => {
-        if (userLoc) {
-          setUserCoords(userLoc);
-          const dist = calculateDistance(userLoc.lat, userLoc.lon, cityCoords.lat, cityCoords.lon);
-          setDistance(Math.round(dist));
-        }
-      });
+  const updateUserLocation = useCallback(async () => {
+    if (!cityCoords) return;
+    setIsRefreshingLocation(true);
+    try {
+      const userLoc = await getUserLocation();
+      if (userLoc) {
+        setUserCoords(userLoc);
+        const distKm = calculateDistance(userLoc.lat, userLoc.lon, cityCoords.lat, cityCoords.lon);
+        setDistance(Math.round(distKm * 1000));
+      } else {
+        setUserCoords(null);
+        setDistance(null);
+      }
+    } finally {
+      setIsRefreshingLocation(false);
     }
   }, [cityCoords]);
+
+  useEffect(() => {
+    updateUserLocation();
+  }, [updateUserLocation]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -84,6 +95,8 @@ export default function TopNav({ data }: TopNavProps) {
       setNotificationsViewed(Number(stored));
     }
   }, [notificationsStorageKey]);
+
+  const formatDistanceMeters = (meters: number) => `${meters.toLocaleString()} 米`;
 
   const handleIslandClick = () => {
     setAIState((prev) => {
@@ -184,7 +197,7 @@ export default function TopNav({ data }: TopNavProps) {
                     {data.life.current_city}
                   </span>
                   {distance !== null && (
-                    <span className="text-xs text-gray-500">距离约 {distance}km</span>
+                    <span className="text-xs text-gray-500">距离约 {formatDistanceMeters(distance)}</span>
                   )}
                 </motion.button>
                 <motion.button
@@ -433,13 +446,28 @@ export default function TopNav({ data }: TopNavProps) {
             </p>
           </div>
           <div>
-            <p className="text-xs uppercase text-gray-400">我的位置</p>
+            <div className="flex items-center justify-between">
+              <p className="text-xs uppercase text-gray-400">我的位置</p>
+              <button
+                type="button"
+                onClick={() => updateUserLocation()}
+                disabled={!cityCoords || isRefreshingLocation}
+                className="rounded-full p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                aria-label="刷新我的位置"
+              >
+                <RefreshCw
+                  className={`h-4 w-4 ${isRefreshingLocation ? 'animate-spin text-blue-500' : ''}`}
+                />
+              </button>
+            </div>
             {userCoords ? (
               <>
                 <p>
                   坐标：{userCoords.lat.toFixed(3)}, {userCoords.lon.toFixed(3)}
                 </p>
-                {distance !== null && <p className="mt-1 text-blue-500">与作者相距 {distance}km</p>}
+                {distance !== null && (
+                  <p className="mt-1 text-blue-500">与作者相距 {formatDistanceMeters(distance)}</p>
+                )}
               </>
             ) : (
               <p>需要权限才能获取你的位置。</p>
@@ -509,7 +537,9 @@ export default function TopNav({ data }: TopNavProps) {
                 <MapPin className="h-4 w-4 text-green-500" />
                 {data.life.current_city}
               </p>
-              {distance !== null && <p className="text-xs text-gray-500 mt-1">与你相距约 {distance}km</p>}
+              {distance !== null && (
+                <p className="text-xs text-gray-500 mt-1">与你相距约 {formatDistanceMeters(distance)}</p>
+              )}
             </div>
             <div className="rounded-2xl border border-white/40 bg-white/40 px-3 py-2">
               <p className="text-sm font-medium">Lv.{age}</p>

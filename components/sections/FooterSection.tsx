@@ -18,7 +18,7 @@ export default function FooterSection() {
 
   useEffect(() => {
     // 从指定日期时间开始计时：Nov 12, 2025, 4:01:29 AM GMT+8
-    const start = new Date('Nov 12, 2025, 4:01:29 AM GMT+8').getTime();
+    const start = new Date('Nov 12, 2025, 4:59:35 AM GMT+8').getTime();
     const tick = () => {
       const diff = Date.now() - start;
       setUptime(formatDuration(diff));

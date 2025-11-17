@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, type KeyboardEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, Twitter, Bell, MapPin, RefreshCw } from 'lucide-react';
 import { ReadmeData } from '@/types';
@@ -11,8 +11,10 @@ import {
   getCityCoordinates,
   getUserLocation,
   calculateDistance,
+  scrollToElement,
 } from '@/lib/utils';
 import Modal from './Modal';
+import { NAV_SECTIONS } from './SideNav';
 
 interface TopNavProps {
   data: ReadmeData;
@@ -37,6 +39,7 @@ export default function TopNav({ data }: TopNavProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [aiInput, setAIInput] = useState('');
+  const [pendingPrompt, setPendingPrompt] = useState<'mbti' | 'zodiac' | null>(null);
   const [isStreaming, setIsStreaming] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [userCoords, setUserCoords] = useState<{ lat: number; lon: number } | null>(null);
@@ -98,6 +101,16 @@ export default function TopNav({ data }: TopNavProps) {
 
   const formatDistanceMeters = (meters: number) => `${meters.toLocaleString()} 米`;
 
+  const getInputPlaceholder = (mode: 'docked' | 'floating') => {
+    if (pendingPrompt === 'mbti') {
+      return '请输入你的 MBTI（例如 INFP）';
+    }
+    if (pendingPrompt === 'zodiac') {
+      return '请输入你的星座（例如 天蝎座）';
+    }
+    return mode === 'docked' ? '输入问题...' : '继续提问...';
+  };
+
   const handleIslandClick = () => {
     setAIState((prev) => {
       if (prev === 'closed') return 'docked';
@@ -107,9 +120,26 @@ export default function TopNav({ data }: TopNavProps) {
   };
 
   const handleSend = async (prompt?: string) => {
-    const text = (prompt ?? aiInput).trim();
+    const rawInput = prompt ?? aiInput;
+    const text = rawInput.trim();
     if (!text) return;
-    const nextMessages = [...messages, { role: 'user' as const, content: text }];
+
+    let finalPrompt = text;
+    if (!prompt && pendingPrompt) {
+      if (pendingPrompt === 'mbti') {
+        const lifeMBTI = data.life.mbti?.life_mbti ?? '未知';
+        const workMBTI = data.life.mbti?.work_mbti ?? '未知';
+        finalPrompt = `访客的 MBTI 是「${text}」。请结合 Yingying 的 MBTI（生活：${lifeMBTI}，工作：${workMBTI}）分析与访客的匹配度，输出性格契合点与建议。`;
+      } else if (pendingPrompt === 'zodiac') {
+        const zodiac = data.life.zodiac_sign || '未知';
+        finalPrompt = `访客的星座是「${text}」。请结合 Yingying 的星座（${zodiac}）进行星座匹配度解析，写出共鸣点与提醒。`;
+      }
+      setPendingPrompt(null);
+    } else if (prompt) {
+      setPendingPrompt(null);
+    }
+
+    const nextMessages = [...messages, { role: 'user' as const, content: finalPrompt }];
     setMessages([...nextMessages, { role: 'assistant', content: '' }]);
     setAIInput('');
     setAIState('floating');
@@ -161,6 +191,31 @@ export default function TopNav({ data }: TopNavProps) {
       });
     } finally {
       setIsStreaming(false);
+    }
+  };
+
+  const handleSuggestionClick = (suggest: string) => {
+    if (suggest.includes('MBTI')) {
+      setPendingPrompt('mbti');
+      setAIInput('');
+      setAIState('docked');
+      return;
+    }
+    if (suggest.includes('星座')) {
+      setPendingPrompt('zodiac');
+      setAIInput('');
+      setAIState('docked');
+      return;
+    }
+    setPendingPrompt(null);
+    void handleSend(suggest);
+  };
+
+  const handleInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key !== 'Enter' || event.nativeEvent.isComposing) return;
+    event.preventDefault();
+    if (!isStreaming) {
+      void handleSend();
     }
   };
 
@@ -225,13 +280,13 @@ export default function TopNav({ data }: TopNavProps) {
             </div>
 
             <motion.div
-              className="relative flex-shrink-0 absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0"
+              className="relative flex-shrink-0 absolute inset-x-0 flex justify-center pointer-events-none sm:pointer-events-auto sm:static sm:w-auto sm:flex-none"
               onHoverStart={() => setIsHovered(true)}
               onHoverEnd={() => setIsHovered(false)}
               onClick={handleIslandClick}
             >
               <motion.div
-                className="px-6 py-2 rounded-full border border-white/20 bg-black text-white/90 backdrop-blur-2xl cursor-pointer shadow-[0_15px_35px_rgba(0,0,0,0.35)]"
+                className="px-6 py-2 rounded-full border border-white/20 bg-black text-white/90 backdrop-blur-2xl cursor-pointer shadow-[0_15px_35px_rgba(0,0,0,0.35)] pointer-events-auto"
                 animate={{
                   scale: isHovered || aiState !== 'closed' ? 1.08 : 1,
                   boxShadow:
@@ -260,7 +315,7 @@ export default function TopNav({ data }: TopNavProps) {
                     initial={{ opacity: 0, y: 10, scale: 0.9 }}
                     animate={{ opacity: 1, y: 12, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.9 }}
-                    className="absolute left-1/2 top-full z-50 mt-4 w-80 -translate-x-1/2 rounded-3xl border border-white/40 bg-white/60 p-4 text-sm shadow-2xl backdrop-blur-2xl"
+                    className="absolute left-1/2 top-full z-50 mt-4 w-[calc(100vw-2rem)] max-w-sm -translate-x-1/2 rounded-3xl border border-white/40 bg-white/60 p-4 text-sm shadow-2xl backdrop-blur-2xl sm:w-80 sm:max-w-none pointer-events-auto"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="mb-3 text-gray-600">
@@ -271,7 +326,7 @@ export default function TopNav({ data }: TopNavProps) {
                         <button
                           key={suggest}
                           className="rounded-full border border-white/50 bg-white/30 px-3 py-1 text-xs text-gray-600 hover:bg-white/60"
-                          onClick={() => handleSend(suggest)}
+                          onClick={() => handleSuggestionClick(suggest)}
                         >
                           {suggest}
                         </button>
@@ -282,12 +337,15 @@ export default function TopNav({ data }: TopNavProps) {
                         type="text"
                         value={aiInput}
                         onChange={(e) => setAIInput(e.target.value)}
-                        placeholder="输入问题..."
-                        className="flex-1 rounded-2xl border border-white/50 bg-white/40 px-3 py-2 text-sm focus:border-purple-400 focus:outline-none"
+                        onKeyDown={handleInputKeyDown}
+                        placeholder={getInputPlaceholder('docked')}
+                        className="flex-1 rounded-2xl border border-white/50 bg-white/40 px-3 py-2 text-sm focus:border-green-400 focus:outline-none"
                       />
                       <button
-                        onClick={() => handleSend()}
-                        className="rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 text-white text-sm disabled:opacity-50"
+                        onClick={() => {
+                          if (!isStreaming) void handleSend();
+                        }}
+                        className="rounded-2xl bg-gradient-to-r from-green-500 to-teal-400 px-4 py-2 text-white text-sm disabled:opacity-50"
                         disabled={isStreaming}
                       >
                         发送
@@ -373,7 +431,7 @@ export default function TopNav({ data }: TopNavProps) {
             initial={{ opacity: 0, x: 60, y: 60 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-4 right-4 lg:bottom-8 lg:right-8 w-[calc(100vw-2rem)] max-w-md h-[28rem] bg-white/90 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/40 flex flex-col z-40"
+            className="fixed bottom-4 right-4 lg:bottom-8 lg:right-8 w-[calc(100vw-2rem)] max-w-md h-[28rem] bg-white/60 backdrop-blur-3xl rounded-3xl shadow-2xl border border-white/40 flex flex-col z-40"
           >
             <div className="flex items-center justify-between px-5 py-4 border-b border-white/50">
               <div>
@@ -381,7 +439,7 @@ export default function TopNav({ data }: TopNavProps) {
                 <p className="text-xs text-gray-500">基于 Yingying 的数字花园</p>
               </div>
               <div className="flex items-center gap-2">
-                {isStreaming && <span className="text-[10px] text-purple-500">回答中...</span>}
+                {isStreaming && <span className="text-[10px] text-green-500">回答中...</span>}
                 <button
                   onClick={() => setAIState('closed')}
                   className="text-gray-500 hover:text-gray-700 transition-colors"
@@ -404,7 +462,7 @@ export default function TopNav({ data }: TopNavProps) {
                   <div
                     className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                       message.role === 'user'
-                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
+                        ? 'bg-gradient-to-r from-green-500 to-teal-400 text-white'
                         : 'bg-white/80 text-gray-800 shadow'
                     }`}
                   >
@@ -420,12 +478,15 @@ export default function TopNav({ data }: TopNavProps) {
                   type="text"
                   value={aiInput}
                   onChange={(e) => setAIInput(e.target.value)}
-                  placeholder="继续提问..."
-                  className="flex-1 rounded-2xl border border-white/50 bg-white/60 px-3 py-2 text-sm focus:border-purple-400 focus:outline-none"
+                  onKeyDown={handleInputKeyDown}
+                  placeholder={getInputPlaceholder('floating')}
+                  className="flex-1 rounded-2xl border border-white/50 bg-white/60 px-3 py-2 text-sm focus:border-green-400 focus:outline-none"
                 />
                 <button
-                  onClick={() => handleSend()}
-                  className="rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 text-white text-sm disabled:opacity-50"
+                  onClick={() => {
+                    if (!isStreaming) void handleSend();
+                  }}
+                  className="rounded-2xl bg-gradient-to-r from-green-500 to-teal-400 px-4 py-2 text-white text-sm disabled:opacity-50"
                   disabled={isStreaming}
                 >
                   发送
@@ -502,60 +563,107 @@ export default function TopNav({ data }: TopNavProps) {
         </div>
       </Modal>
 
-      <Modal open={showMobilePanel} onClose={() => setShowMobilePanel(false)}>
-        <div className="space-y-4 text-sm text-gray-700">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-teal-400 text-white font-semibold flex items-center justify-center">
-              {data.basic.name[0]}
-            </div>
-            <div>
-              <p className="font-semibold">{data.basic.name}</p>
-              <p className="text-xs text-gray-500">{data.basic.intro}</p>
-            </div>
-          </div>
-          <div>
-            <p className="text-xs uppercase text-gray-400 mb-1">社交平台</p>
-            <div className="space-y-2">
-              {data.contact.platform_accounts.map((platform) => (
-                <a
-                  key={platform.platform_name}
-                  href={platform.homepage_link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between rounded-xl border border-white/40 bg-white/40 px-3 py-2 text-sm text-gray-700"
+      <AnimatePresence>
+        {showMobilePanel && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.6 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm sm:hidden"
+              onClick={() => setShowMobilePanel(false)}
+            />
+            <motion.div
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+              className="fixed inset-y-0 left-0 z-50 w-[min(24rem,50vw)] max-w-full bg-white/85 backdrop-blur-2xl border-r border-white/40 p-5 flex flex-col gap-6 text-gray-800 sm:hidden"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-teal-400 text-white font-semibold flex items-center justify-center">
+                    {data.basic.name[0]}
+                  </div>
+                  <div>
+                    <p className="font-semibold">{data.basic.name}</p>
+                    <p className="text-xs text-gray-500">{data.basic.intro}</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowMobilePanel(false)}
+                  className="text-gray-500 hover:text-gray-700 text-xl"
+                  aria-label="关闭侧边导航"
                 >
-                  <span>{platform.platform_name}</span>
-                  <span className="text-xs text-gray-500">{platform.username}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-          <div className="space-y-3">
-            <p className="text-xs uppercase text-gray-400">地点与等级</p>
-            <div className="rounded-2xl border border-white/40 bg-white/40 px-3 py-2">
-              <p className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-green-500" />
-                {data.life.current_city}
-              </p>
-              {distance !== null && (
-                <p className="text-xs text-gray-500 mt-1">与你相距约 {formatDistanceMeters(distance)}</p>
-              )}
-            </div>
-            <div className="rounded-2xl border border-white/40 bg-white/40 px-3 py-2">
-              <p className="text-sm font-medium">Lv.{age}</p>
-              <p className="text-xs text-gray-500 mb-1">
-                {yearProgress.daysPassed}/{yearProgress.totalDays}
-              </p>
-              <div className="h-2 rounded-full bg-gray-200 overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-purple-500 to-pink-500"
-                  style={{ width: `${yearProgress.percentage}%` }}
-                />
+                  ✕
+                </button>
               </div>
-            </div>
-          </div>
-        </div>
-      </Modal>
+
+              <div className="space-y-3 text-sm">
+                <p className="text-xs uppercase text-gray-400">地点与等级</p>
+                <div className="rounded-2xl border border-white/40 bg-white/60 px-3 py-2">
+                  <p className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-green-500" />
+                    {data.life.current_city}
+                  </p>
+                  {distance !== null && (
+                    <p className="text-xs text-gray-500 mt-1">与你相距约 {formatDistanceMeters(distance)}</p>
+                  )}
+                </div>
+                <div className="rounded-2xl border border-white/40 bg-white/60 px-3 py-2">
+                  <p className="text-sm font-medium">Lv.{age}</p>
+                  <p className="text-xs text-gray-500 mb-1">
+                    {yearProgress.daysPassed}/{yearProgress.totalDays}
+                  </p>
+                  <div className="h-2 rounded-full bg-gray-200 overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-to-r from-green-500 to-teal-500"
+                      style={{ width: `${yearProgress.percentage}%` }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs uppercase text-gray-400 mb-1">社交平台</p>
+                <div className="space-y-2 text-sm">
+                  {data.contact.platform_accounts.map((platform) => (
+                    <a
+                      key={platform.platform_name}
+                      href={platform.homepage_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between rounded-xl border border-white/40 bg-white/60 px-3 py-2 text-gray-700"
+                    >
+                      <span>{platform.platform_name}</span>
+                      <span className="text-xs text-gray-500">{platform.username}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex-1 overflow-y-auto">
+                <p className="text-xs uppercase text-gray-400 mb-2">导航</p>
+                <div className="flex flex-col gap-2">
+                  {NAV_SECTIONS.map((section) => (
+                    <button
+                      key={section.id}
+                      onClick={() => {
+                        scrollToElement(section.id);
+                        setShowMobilePanel(false);
+                      }}
+                      className="w-full rounded-xl border border-white/40 bg-white/60 px-3 py-2 text-left text-sm text-gray-700"
+                    >
+                      {section.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {aiState === 'docked' && (

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { scrollToElement } from '@/lib/utils';
 
-const sections = [
+export const NAV_SECTIONS = [
   { id: 'experience', label: '经历' },
   { id: 'education', label: '教育' },
   { id: 'work', label: '工作' },
@@ -19,20 +19,24 @@ const sections = [
   { id: 'tags', label: '标签' },
   { id: 'contact', label: '联系' },
   { id: 'message', label: '留言' },
-];
+] as const;
+
+type NavSectionId = (typeof NAV_SECTIONS)[number]['id'];
 
 export default function SideNav() {
-  const [activeSection, setActiveSection] = useState(sections[0]?.id ?? '');
+  const [activeSection, setActiveSection] = useState<NavSectionId>(
+    NAV_SECTIONS[0]?.id ?? 'experience'
+  );
   const [deepWaterActive, setDeepWaterActive] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
       
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const element = document.getElementById(sections[i].id);
+      for (let i = NAV_SECTIONS.length - 1; i >= 0; i--) {
+        const element = document.getElementById(NAV_SECTIONS[i].id);
         if (element && element.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i].id);
+          setActiveSection(NAV_SECTIONS[i].id);
           break;
         }
       }
@@ -67,7 +71,7 @@ export default function SideNav() {
     >
       <div className="rounded-2xl border border-white/30 bg-white/30 backdrop-blur-xl p-4">
         <div className="flex flex-col gap-0">
-          {sections.map((section) => (
+          {NAV_SECTIONS.map((section) => (
             <button
               key={section.id}
               onClick={() => scrollToElement(section.id)}

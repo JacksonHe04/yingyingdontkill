@@ -89,34 +89,35 @@ export default function DevelopmentSection({ data }: DevelopmentSectionProps) {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
                   style={useDesktopLayout ? { gridRow: pos.row, gridColumn: pos.col } : undefined}
-                  className="flex flex-col"
                 >
-                  <div className="h-32 rounded-2xl border border-white/20 bg-white/5 mb-3 flex items-center justify-center text-xs text-white/50">
-                    预留封面
+                  <div className="flex flex-col md:flex-row gap-4 md:items-stretch">
+                    <div className="rounded-2xl border border-white/20 bg-white/5 flex items-center justify-center text-xs text-white/50 h-32 md:h-auto md:min-h-[8rem] md:w-40">
+                      预留封面
+                    </div>
+                    <GlassCard className="flex-1">
+                      <h4 className="font-semibold mb-2">{project.project_name}</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{project.description}</p>
+                      <div className="flex flex-wrap gap-1 mb-3">
+                        {project.tech_stack.slice(0, 2).map((tech, i) => (
+                          <span key={i} className="px-2 py-0.5 bg-white/10 rounded text-xs">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex gap-3 text-xs text-blue-400">
+                        {project.github && (
+                          <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                            GitHub
+                          </a>
+                        )}
+                        {project.link && (
+                          <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                            访问
+                          </a>
+                        )}
+                      </div>
+                    </GlassCard>
                   </div>
-                  <GlassCard className="-mt-4 pt-8">
-                    <h4 className="font-semibold mb-2">{project.project_name}</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{project.description}</p>
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      {project.tech_stack.slice(0, 2).map((tech, i) => (
-                        <span key={i} className="px-2 py-0.5 bg-white/10 rounded text-xs">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex gap-3 text-xs text-blue-400">
-                      {project.github && (
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                          GitHub
-                        </a>
-                      )}
-                      {project.link && (
-                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                          访问
-                        </a>
-                      )}
-                    </div>
-                  </GlassCard>
                 </motion.div>
               );
             })}
@@ -129,11 +130,11 @@ export default function DevelopmentSection({ data }: DevelopmentSectionProps) {
                 style={useDesktopLayout ? { gridRow: 2, gridColumn: 2 } : undefined}
                 className="z-10"
               >
-                <div className="flex flex-col">
-                  <div className="h-36 rounded-2xl border border-white/30 bg-white/10 mb-3 flex items-center justify-center text-sm text-white/60">
+                <div className="flex flex-col md:flex-row gap-4 md:items-stretch">
+                  <div className="rounded-2xl border border-white/30 bg-white/10 flex items-center justify-center text-sm text-white/60 h-36 md:h-auto md:min-h-[10rem] md:w-48">
                     预留封面
                   </div>
-                  <GlassCard className="-mt-6 bg-gradient-to-br from-purple-500/30 to-pink-500/30 pt-10">
+                  <GlassCard className="flex-1 bg-gradient-to-br from-purple-500/30 to-pink-500/30">
                     <h4 className="font-bold text-lg mb-2">{centerProject.project_name}</h4>
                     <p className="text-sm mb-3">{centerProject.description}</p>
                     <div className="flex flex-wrap gap-1 mb-3">

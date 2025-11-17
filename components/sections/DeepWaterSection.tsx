@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, type PanInfo } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { ReadmeData } from '@/types';
 import GlassCard from '../GlassCard';
 import DeepSpaceScene from '../scenes/DeepSpaceScene';
@@ -10,10 +10,14 @@ interface DeepWaterSectionProps {
   data: ReadmeData['thoughts'];
 }
 
+const SCROLL_UNLOCK_DISTANCE = 1200;
+
 export default function DeepWaterSection({ data }: DeepWaterSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [pullProgress, setPullProgress] = useState(0);
+  const [isInViewport, setIsInViewport] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,32 +32,109 @@ export default function DeepWaterSection({ data }: DeepWaterSectionProps) {
   }, []);
 
   useEffect(() => {
-    window.dispatchEvent(
-      new CustomEvent('deepwater-visibility', { detail: { active: isUnlocked } })
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setIsInViewport(entries[0]?.isIntersecting ?? false);
+      },
+      { threshold: 0.2 }
     );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent('deepwater-visibility', {
+        detail: { active: isUnlocked && isInViewport },
+      })
+    );
+  }, [isUnlocked, isInViewport]);
+
+  useEffect(() => {
     return () => {
       window.dispatchEvent(
         new CustomEvent('deepwater-visibility', { detail: { active: false } })
       );
     };
-  }, [isUnlocked]);
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible || isUnlocked) return;
+
+    const isNearBottom = () =>
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8;
+
+    const pushProgress = (delta: number) => {
+      if (!delta) return;
+      setPullProgress((prev) => {
+        const next = Math.max(0, Math.min(1, prev + delta));
+        if (next >= 1) {
+          setIsUnlocked(true);
+          return 1;
+        }
+        return next;
+      });
+    };
+
+    const handleWheel = (event: WheelEvent) => {
+      if (!isNearBottom()) return;
+      pushProgress(event.deltaY / SCROLL_UNLOCK_DISTANCE);
+    };
+
+    let lastTouchY: number | null = null;
+    const handleTouchStart = (event: TouchEvent) => {
+      lastTouchY = event.touches[0]?.clientY ?? null;
+    };
+    const handleTouchMove = (event: TouchEvent) => {
+      if (lastTouchY === null || !isNearBottom()) return;
+      const currentY = event.touches[0]?.clientY ?? 0;
+      const delta = lastTouchY - currentY;
+      lastTouchY = currentY;
+      if (delta === 0) return;
+      pushProgress(delta / (SCROLL_UNLOCK_DISTANCE * 0.7));
+    };
+    const handleTouchEnd = () => {
+      lastTouchY = null;
+    };
+
+    const handleReset = () => {
+      if (!isNearBottom()) {
+        setPullProgress((prev) => (prev > 0 ? Math.max(0, prev - 0.05) : 0));
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd);
+    window.addEventListener('scroll', handleReset);
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('scroll', handleReset);
+    };
+  }, [isVisible, isUnlocked]);
 
   if (!isVisible) return null;
 
-  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    if (info.offset.y > 100) {
-      setIsUnlocked(true);
-      setPullProgress(1);
-    } else {
-      setPullProgress(0);
-    }
-  };
+  const sectionSpacing = isUnlocked
+    ? 'px-0 lg:ml-[-8rem] xl:ml-[-10rem] 2xl:ml-[-12rem]'
+    : 'px-4';
+  const innerSpacing = isUnlocked ? 'px-4 sm:px-8 lg:px-16' : '';
 
   return (
-    <section id="deepwater" className="min-h-screen w-full py-20 px-4 relative overflow-hidden">
+    <section
+      id="deepwater"
+      ref={sectionRef}
+      className={`min-h-screen w-full py-20 relative overflow-hidden transition-all duration-500 ${sectionSpacing}`}
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-950 via-purple-950 to-black" />
 
-      <div className="relative z-10 space-y-10">
+      <div className={`relative z-10 space-y-10 ${innerSpacing}`}>
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -64,7 +145,9 @@ export default function DeepWaterSection({ data }: DeepWaterSectionProps) {
 
         {!isUnlocked ? (
           <div className="flex flex-col items-center gap-6 text-white">
-            <p className="text-sm text-white/70">向下拖拽把手，感受进入未知的阻力</p>
+            <p className="text-sm text-white/70 text-center">
+              持续向下滑动，穿透更大的阻力以开启深水区
+            </p>
             <motion.div
               className="w-full max-w-sm rounded-full border border-white/30 bg-white/10 p-1"
               initial={{ opacity: 0, y: 20 }}
@@ -75,15 +158,9 @@ export default function DeepWaterSection({ data }: DeepWaterSectionProps) {
                 style={{ width: `${pullProgress * 100}%` }}
               />
             </motion.div>
-            <motion.div
-              drag="y"
-              dragConstraints={{ top: 0, bottom: 160 }}
-              onDrag={(_, info) => setPullProgress(Math.min(1, info.offset.y / 140))}
-              onDragEnd={handleDragEnd}
-              className="w-32 rounded-full border border-white/40 bg-white/20 text-center py-3 text-sm font-semibold cursor-grab"
-            >
-              下拉潜水
-            </motion.div>
+            <p className="text-xs text-white/60">
+              当前充能 {Math.round(pullProgress * 100)}%，继续滚动解锁入口
+            </p>
           </div>
         ) : (
           <>

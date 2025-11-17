@@ -4,75 +4,39 @@
 
 ## 界面预览
 
-<!-- 主页叙事区 -->
-<div style="text-align: center;">
-<img src="docs/images/desktop-home.png" alt="主页叙事区" />
-<p style="font-size: 14px; color: #666; margin-top: 5px;">主页叙事区</p>
+<!-- 主页叙事区：单图，整行居中且行容器占满宽度 -->
+<div style="display:flex; width:100%; box-sizing:border-box; justify-content:center; align-items:center; gap:0; margin:12px 0; text-align:center;">
+  <img src="docs/images/desktop-home.png" alt="主页叙事区" style="height:626px">
 </div>
 
-<!-- 小缨缨 AI -->
-<div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap;">
-<div style="text-align: center;">
-<img src="docs/images/desktop-hobby-ask.png" alt="兴趣爱好提问" />
-<p style="font-size: 14px; color: #666; margin-top: 5px;">兴趣爱好提问</p>
-</div>
-<div style="text-align: center;">
-<img src="docs/images/desktop-hobby-anwser.png" alt="兴趣爱好回答" />
-<p style="font-size: 14px; color: #666; margin-top: 5px;">兴趣爱好回答</p>
-</div>
-</div>
-<div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap;">
-<div style="text-align: center;">
-<img src="docs/images/desktop-mbti-ask.png" alt="MBTI匹配提问" />
-<p style="font-size: 14px; color: #666; margin-top: 5px;">MBTI匹配提问</p>
-</div>
-<div style="text-align: center;">
-<img src="docs/images/desktop-mbti-anwser.png" alt="MBTI匹配问答" />
-<p style="font-size: 14px; color: #666; margin-top: 5px;">MBTI匹配问答</p>
-</div>
+<!-- 问答：每对问答同一行，整行居中，占满宽度 -->
+<div style="display:flex; width:100%; box-sizing:border-box; justify-content:center; align-items:flex-start; gap:12px; margin:12px 0; text-align:center; flex-wrap:nowrap;">
+  <img src="docs/images/desktop-hobby-ask.png" alt="兴趣爱好提问" style="height:310px">
+  <img src="docs/images/desktop-hobby-anwser.png" alt="兴趣爱好回答" style="height:310px">
 </div>
 
-<!-- 移动端 -->
-<div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap; overflow-x: auto;">
-<div style="text-align: center;">
-<img src="docs/images/mobile-home.png" alt="移动端首页" />
-<p style="font-size: 14px; color: #666; margin-top: 5px;">移动端首页</p>
-</div>
-<div style="text-align: center;">
-<img src="docs/images/mobile-menu.png" alt="移动端菜单" />
-<p style="font-size: 14px; color: #666; margin-top: 5px;">移动端菜单</p>
-</div>
-<div style="text-align: center;">
-<img src="docs/images/mobile-ask.png" alt="移动端问答" />
-<p style="font-size: 14px; color: #666; margin-top: 5px;">移动端问答</p>
-</div>
-<div style="text-align: center;">
-<img src="docs/images/mobile-galaxy.png" alt="移动端星系" />
-<p style="font-size: 14px; color: #666; margin-top: 5px;">移动端星系</p>
-</div>
+<div style="display:flex; width:100%; box-sizing:border-box; justify-content:center; align-items:flex-start; gap:12px; margin:12px 0; text-align:center; flex-wrap:nowrap;">
+  <img src="docs/images/desktop-mbti-ask.png" alt="MBTI匹配提问" style="height:310px">
+  <img src="docs/images/desktop-mbti-anwser.png" alt="MBTI匹配问答" style="height:310px">
 </div>
 
-<!-- 卡片 -->
-<div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap;">
-<div style="text-align: center;">
-<img src="docs/images/desktop-music.png" alt="音乐卡片" />
-<p style="font-size: 14px; color: #666; margin-top: 5px;">音乐卡片</p>
+<!-- 移动端：4张图片同一行，整行居中，占满宽度 -->
+<div style="display:flex; width:100%; box-sizing:border-box; justify-content:center; align-items:flex-start; margin:12px 0; text-align:center; flex-wrap:nowrap;">
+  <img src="docs/images/mobile-home.png" alt="移动端首页" style="height:485px;">
+  <img src="docs/images/mobile-menu.png" alt="移动端菜单" style="height:485px;">
+  <img src="docs/images/mobile-ask.png" alt="移动端问答" style="height:485px;">
+  <img src="docs/images/mobile-galaxy.png" alt="移动端星系" style="height:485px;">
 </div>
-<div style="text-align: center;">
-<img src="docs/images/desktop-desk.png" alt="电影卡片" />
-<p style="font-size: 14px; color: #666; margin-top: 5px;">电影卡片</p>
+
+<!-- 卡片：最后4张分两行，每行2个，整行居中，占满宽度 -->
+<div style="display:flex; width:100%; box-sizing:border-box; justify-content:center; align-items:flex-start; gap:12px; margin:12px 0; text-align:center; flex-wrap:nowrap;">
+  <img src="docs/images/desktop-music.png" alt="音乐卡片" style="height:310px">
+  <img src="docs/images/desktop-desk.png" alt="电影卡片" style="height:310px">
 </div>
-</div>
-<div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap;">
-<div style="text-align: center;">
-<img src="docs/images/desktop-label.png" alt="标签墙" />
-<p style="font-size: 14px; color: #666; margin-top: 5px;">标签墙</p>
-</div>
-<!-- 深水区 -->
-<div style="text-align: center;">
-<img src="docs/images/desktop-into-deepwater.png" alt="进入深水区" />
-<p style="font-size: 14px; color: #666; margin-top: 5px;">进入深水区</p>
-</div>
+
+<div style="display:flex; width:100%; box-sizing:border-box; justify-content:center; align-items:flex-start; gap:12px; margin:12px 0; text-align:center; flex-wrap:nowrap;">
+  <img src="docs/images/desktop-label.png" alt="标签墙" style="height:310px">
+  <img src="docs/images/desktop-into-deepwater.png" alt="进入深水区" style="height:310px">
 </div>
 
 ## 项目亮点

@@ -21,12 +21,14 @@ import ContactSection from '@/components/sections/ContactSection';
 import MessageSection from '@/components/sections/MessageSection';
 import FooterSection from '@/components/sections/FooterSection';
 import DeepWaterSection from '@/components/sections/DeepWaterSection';
+import { AnimatedGradientBackground } from '@/components/BackGround';
 
 export default function Home() {
   const data = getReadmeData();
 
   return (
     <main className="relative min-h-screen">
+      <AnimatedGradientBackground />
       <TopNav data={data} />
       <SideNav />
       

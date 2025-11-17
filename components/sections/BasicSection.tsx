@@ -18,7 +18,7 @@ export default function BasicSection({ data }: BasicSectionProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-white to-teal-500 bg-clip-text text-transparent">
             {data.name}
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-6">{data.intro}</p>

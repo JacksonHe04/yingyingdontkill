@@ -143,7 +143,7 @@ export default function TopNav({ data }: TopNavProps) {
           <div className="flex items-center justify-between h-14 lg:h-16">
             {/* 左侧 */}
             <div className="flex items-center gap-2 lg:gap-4">
-              <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white font-bold text-sm lg:text-base">
+              <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-br from-green-400 to-teal-400 flex items-center justify-center text-white font-bold text-sm lg:text-base">
                 {data.basic.name[0]}
               </div>
               <button
@@ -152,7 +152,7 @@ export default function TopNav({ data }: TopNavProps) {
                 className="hidden sm:flex flex-col text-left text-gray-700"
               >
                 <span className="flex items-center gap-1 text-xs lg:text-sm font-medium">
-                  <MapPin className="h-3 w-3 text-purple-500" />
+                  <MapPin className="h-3 w-3 text-green-500" />
                   {data.life.current_city}
                   {distance !== null && (
                     <span className="ml-1 text-[10px] text-blue-500">查看</span>
@@ -171,7 +171,7 @@ export default function TopNav({ data }: TopNavProps) {
                 </div>
                 <div className="w-28 lg:w-32 h-1.5 bg-gray-200/80 rounded-full overflow-hidden">
                   <motion.div
-                    className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
+                    className="h-full bg-gradient-to-r from-green-500 to-teal-500"
                     initial={{ width: 0 }}
                     animate={{ width: `${yearProgress.percentage}%` }}
                     transition={{ duration: 1 }}

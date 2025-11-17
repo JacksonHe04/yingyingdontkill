@@ -74,6 +74,8 @@ const cityCoordinates: Record<string, { lat: number; lon: number }> = {
   广州: { lat: 23.1291, lon: 113.2644 },
   深圳: { lat: 22.5431, lon: 114.0579 },
   杭州: { lat: 30.2741, lon: 120.1551 },
+  南京: { lat: 32.0603, lon: 118.7969 },
+  青阳: { lat: 30.6386, lon: 117.8648 },
 };
 
 // 获取城市坐标
@@ -108,4 +110,3 @@ export function scrollToElement(elementId: string) {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
-

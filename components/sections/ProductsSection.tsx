@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ReadmeData } from '@/types';
 import GlassCard from '../GlassCard';
 import ProductDeskScene from '../scenes/ProductDeskScene';
+import Modal from '../Modal';
 
 interface ProductsSectionProps {
   data: ReadmeData['products'];
@@ -41,7 +42,7 @@ export default function ProductsSection({ data }: ProductsSectionProps) {
         />
 
         {/* 最爱产品 */}
-        <div className="mb-12">
+        <div className="mt-16 mb-12">
           <h3 className="text-2xl font-semibold mb-6">最爱产品</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {data.favorite_products.map((product, idx) => (
@@ -85,7 +86,7 @@ export default function ProductsSection({ data }: ProductsSectionProps) {
         </div>
 
         {/* 推荐产品 */}
-        <div className="mb-12">
+        <div className="mt-16 mb-12">
           <h3 className="text-2xl font-semibold mb-6">推荐产品</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {data.recommended_products.map((product, idx) => (
@@ -129,7 +130,7 @@ export default function ProductsSection({ data }: ProductsSectionProps) {
         </div>
 
         {/* 我的硬件 */}
-        <div className="mb-12">
+        <div className="mt-16 mb-12">
           <h3 className="text-2xl font-semibold mb-6">我的硬件</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <GlassCard>
@@ -168,7 +169,7 @@ export default function ProductsSection({ data }: ProductsSectionProps) {
         </div>
 
         {/* 最爱品牌 */}
-        <div>
+        <div className="mt-16">
           <h3 className="text-2xl font-semibold mb-6">最爱品牌</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {data.favorite_brands.map((brand, idx) => (
@@ -192,48 +193,25 @@ export default function ProductsSection({ data }: ProductsSectionProps) {
           </div>
         </div>
 
-        {/* 产品详情弹窗 */}
-        <AnimatePresence>
+        <Modal open={!!selectedProduct} onClose={() => setSelectedProduct(null)}>
           {selectedProduct && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-              onClick={() => setSelectedProduct(null)}
-            >
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.8, opacity: 0 }}
-                className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-2xl p-6 max-w-md w-full"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={() => setSelectedProduct(null)}
-                  className="float-right text-gray-500 hover:text-gray-700"
+            <div>
+              <h3 className="text-2xl font-bold mb-2 text-gray-900">{selectedProduct.title}</h3>
+              <p className="text-sm text-gray-600 mb-3">{selectedProduct.tags?.join(' · ')}</p>
+              <p className="text-gray-700 mb-4">{selectedProduct.description}</p>
+              {selectedProduct.link && (
+                <a
+                  href={selectedProduct.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline font-medium"
                 >
-                  ✕
-                </button>
-                <h3 className="text-2xl font-bold mb-2">{selectedProduct.title}</h3>
-                <p className="text-sm text-gray-500 mb-4">
-                  {selectedProduct.tags?.join(' · ')}
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">{selectedProduct.description}</p>
-                {selectedProduct.link && (
-                  <a
-                    href={selectedProduct.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
-                  >
-                    打开链接 →
-                  </a>
-                )}
-              </motion.div>
-            </motion.div>
+                  打开链接 →
+                </a>
+              )}
+            </div>
           )}
-        </AnimatePresence>
+        </Modal>
       </div>
     </section>
   );

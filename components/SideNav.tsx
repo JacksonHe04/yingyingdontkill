@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { scrollToElement } from '@/lib/utils';
 
 const sections = [
-  { id: 'basic', label: '基础' },
   { id: 'experience', label: '经历' },
   { id: 'education', label: '教育' },
   { id: 'work', label: '工作' },
@@ -23,7 +22,8 @@ const sections = [
 ];
 
 export default function SideNav() {
-  const [activeSection, setActiveSection] = useState('basic');
+  const [activeSection, setActiveSection] = useState(sections[0]?.id ?? '');
+  const [deepWaterActive, setDeepWaterActive] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +41,22 @@ export default function SideNav() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handleDeepWater = (event: Event) => {
+      const detail = (event as CustomEvent<{ active: boolean }>).detail;
+      setDeepWaterActive(detail?.active ?? false);
+    };
+
+    window.addEventListener('deepwater-visibility', handleDeepWater as EventListener);
+    return () => {
+      window.removeEventListener('deepwater-visibility', handleDeepWater as EventListener);
+    };
+  }, []);
+
+  if (deepWaterActive) {
+    return null;
+  }
 
   return (
     <motion.nav

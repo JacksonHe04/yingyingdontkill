@@ -19,24 +19,24 @@ export default function FilmDeskScene({ films, onSelect, activeTitle }: FilmDesk
   const featured = films.slice(0, 4);
 
   return (
-    <div className="relative mt-8 w-full overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-950 via-purple-900 to-blue-900 p-6 text-white shadow-2xl shadow-indigo-950/60">
-      <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(99,102,241,0.15),_transparent_60%)] opacity-80" />
+    <div className="relative mt-8 w-full overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-950 via-green-900 to-slate-900 p-6 text-white shadow-2xl shadow-emerald-950/60">
+      <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(34,197,94,0.15),_transparent_60%)] opacity-80" />
       <div className="relative z-10">
-        <p className="text-sm uppercase tracking-[0.5em] text-indigo-100/80">Film Desk</p>
+        <p className="text-sm uppercase tracking-[0.5em] text-emerald-100/80">Film Desk</p>
         <h3 className="text-2xl font-semibold">书桌上的碟片 · 旋转查看影片</h3>
-        <p className="text-sm text-indigo-100/80">每张唱片对应一部作品，点击旋转并查看摘要链接。</p>
+        <p className="text-sm text-emerald-100/80">每张唱片对应一部作品，点击旋转并查看摘要链接。</p>
       </div>
 
-      <div className="relative mt-10 h-[320px]">
-        <div className="absolute inset-x-0 bottom-0 h-28 rounded-[40px] bg-gradient-to-br from-indigo-400/60 to-purple-400/70 blur-2xl opacity-80" />
-        <div className="absolute inset-x-12 bottom-6 h-2 rounded-full bg-blue-100/40 blur-xl" />
+      <div className="relative mt-6 h-[320px]">
+        <div className="absolute inset-x-0 bottom-0 h-28 rounded-[40px] bg-gradient-to-br from-emerald-300/60 to-lime-300/70 blur-2xl opacity-80" />
+        <div className="absolute inset-x-12 bottom-6 h-2 rounded-full bg-green-100/40 blur-xl" />
 
-        <div className="relative flex h-full items-end justify-center gap-10">
+        <div className="relative flex h-full flex-wrap items-end justify-center gap-6">
           {featured.map((film, idx) => (
             <motion.button
               key={film.name}
-              className={`relative flex h-48 w-48 items-center justify-center rounded-full bg-gradient-to-br from-slate-900 to-slate-800 shadow-[0_25px_45px_rgba(30,58,138,0.45)] ${
-                activeTitle === film.name ? 'ring-4 ring-pink-400/60' : 'ring-2 ring-white/10'
+              className={`relative flex h-32 w-32 sm:h-40 sm:w-40 md:h-48 md:w-48 items-center justify-center rounded-full bg-gradient-to-br from-slate-900 to-slate-800 shadow-[0_25px_45px_rgba(15,118,110,0.45)] ${
+                activeTitle === film.name ? 'ring-4 ring-emerald-400/60' : 'ring-2 ring-white/10'
               }`}
               whileHover={{ scale: 1.05 }}
               animate={{ rotate: [0, 360] }}

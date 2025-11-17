@@ -7,7 +7,7 @@
   "basic": {
     "name": "缨缨的反杀从来不是错觉",
     "intro": "东南大学｜人工智能｜大四",
-    "current_status": "上学中",
+    "current_status": "上学中...",
     "keywords": [
       "前端开发",
       "AI",
@@ -78,10 +78,31 @@
     "schools": [
       {
         "degree": "本科",
-        "major": "人工智能",
-        "institution": "东南大学计软智学院",
+        "major": "计软智学院",
+        "institution": "东南大学",
         "start_date": "2022-08",
         "end_date": "2026-07"
+      },
+      {
+        "degree": "高中",
+        "major": "2班",
+        "institution": "安徽省青阳中学",
+        "start_date": "2019-08",
+        "end_date": "2022-06"
+      },
+      {
+        "degree": "初中",
+        "major": "3班",
+        "institution": "青阳县第四中学",
+        "start_date": "2016-09",
+        "end_date": "2019-06"
+      },
+      {
+        "degree": "小学",
+        "major": "1班",
+        "institution": "蓉城镇第一小学",
+        "start_date": "2010-09",
+        "end_date": "2016-06"
       }
     ],
     "undergraduate_major": "人工智能",

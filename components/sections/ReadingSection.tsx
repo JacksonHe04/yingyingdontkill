@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ReadmeData } from '@/types';
 import GlassCard from '../GlassCard';
 import ReadingDeskScene from '../scenes/ReadingDeskScene';
+import Modal from '../Modal';
 
 interface ReadingSectionProps {
   data: ReadmeData['reading'];
@@ -48,7 +49,7 @@ export default function ReadingSection({ data }: ReadingSectionProps) {
         />
 
         {/* 书籍 */}
-        <div className="mb-12">
+        <div className="mt-16 mb-12">
           <h3 className="text-2xl font-semibold mb-6">书籍</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {data.books.map((book, idx) => (
@@ -95,7 +96,7 @@ export default function ReadingSection({ data }: ReadingSectionProps) {
         </div>
 
         {/* 作家 */}
-        <div>
+        <div className="mt-16">
           <h3 className="text-2xl font-semibold mb-6">作家</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {data.authors.map((author, idx) => (
@@ -119,47 +120,27 @@ export default function ReadingSection({ data }: ReadingSectionProps) {
         </div>
 
         {/* 书籍详情弹窗 */}
-        <AnimatePresence>
+        <Modal open={!!selectedBook} onClose={() => setSelectedBook(null)}>
           {selectedBook && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-              onClick={() => setSelectedBook(null)}
-            >
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.8, opacity: 0 }}
-                className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-2xl p-6 max-w-md w-full"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={() => setSelectedBook(null)}
-                  className="float-right text-gray-500 hover:text-gray-700"
+            <div>
+              <h3 className="text-2xl font-bold mb-2 text-gray-900">{selectedBook.title}</h3>
+              <p className="text-sm text-gray-500 mb-4">
+                {selectedBook.author} · {selectedBook.country}
+              </p>
+              <p className="text-gray-700 mb-4">{selectedBook.description}</p>
+              {selectedBook.link && (
+                <a
+                  href={selectedBook.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline font-medium"
                 >
-                  ✕
-                </button>
-                <h3 className="text-2xl font-bold mb-2">{selectedBook.title}</h3>
-                <p className="text-gray-500 mb-4">
-                  {selectedBook.author} · {selectedBook.country}
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">{selectedBook.description}</p>
-                {selectedBook.link && (
-                  <a
-                    href={selectedBook.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:underline"
-                  >
-                    查看详情 →
-                  </a>
-                )}
-              </motion.div>
-            </motion.div>
+                  查看详情 →
+                </a>
+              )}
+            </div>
           )}
-        </AnimatePresence>
+        </Modal>
       </div>
     </section>
   );

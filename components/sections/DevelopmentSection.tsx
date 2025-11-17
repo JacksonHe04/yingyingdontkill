@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ReadmeData } from '@/types';
 import GlassCard from '../GlassCard';
@@ -13,6 +14,14 @@ export default function DevelopmentSection({ data }: DevelopmentSectionProps) {
   const projects = data.projects;
   const centerProject = projects[0];
   const surroundingProjects = projects.slice(1);
+  const [useDesktopLayout, setUseDesktopLayout] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setUseDesktopLayout(window.innerWidth >= 1024);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <section id="development" className="min-h-screen flex items-center justify-center py-20 px-4">
@@ -58,7 +67,7 @@ export default function DevelopmentSection({ data }: DevelopmentSectionProps) {
 
         {/* 项目 - 不规则布局 */}
         <div className="relative">
-          <div className="grid grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {/* 周围8个项目 */}
             {surroundingProjects.slice(0, 8).map((project, idx) => {
               const positions = [
@@ -75,45 +84,34 @@ export default function DevelopmentSection({ data }: DevelopmentSectionProps) {
               return (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  style={{ gridRow: pos.row, gridColumn: pos.col }}
+                  style={useDesktopLayout ? { gridRow: pos.row, gridColumn: pos.col } : undefined}
+                  className="flex flex-col"
                 >
-                  <GlassCard>
+                  <div className="h-32 rounded-2xl border border-white/20 bg-white/5 mb-3 flex items-center justify-center text-xs text-white/50">
+                    预留封面
+                  </div>
+                  <GlassCard className="-mt-4 pt-8">
                     <h4 className="font-semibold mb-2">{project.project_name}</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                      {project.description}
-                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{project.description}</p>
                     <div className="flex flex-wrap gap-1 mb-3">
                       {project.tech_stack.slice(0, 2).map((tech, i) => (
-                        <span
-                          key={i}
-                          className="px-2 py-0.5 bg-white/10 rounded text-xs"
-                        >
+                        <span key={i} className="px-2 py-0.5 bg-white/10 rounded text-xs">
                           {tech}
                         </span>
                       ))}
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-3 text-xs text-blue-400">
                       {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs text-blue-400 hover:underline"
-                        >
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:underline">
                           GitHub
                         </a>
                       )}
                       {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs text-blue-400 hover:underline"
-                        >
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
                           访问
                         </a>
                       )}
@@ -128,45 +126,37 @@ export default function DevelopmentSection({ data }: DevelopmentSectionProps) {
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                style={{ gridRow: 2, gridColumn: 2 }}
+                style={useDesktopLayout ? { gridRow: 2, gridColumn: 2 } : undefined}
                 className="z-10"
               >
-                <GlassCard className="bg-gradient-to-br from-purple-500/30 to-pink-500/30">
-                  <h4 className="font-bold text-lg mb-2">{centerProject.project_name}</h4>
-                  <p className="text-sm mb-3">{centerProject.description}</p>
-                  <div className="flex flex-wrap gap-1 mb-3">
-                    {centerProject.tech_stack.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="px-2 py-0.5 bg-white/20 rounded text-xs"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                <div className="flex flex-col">
+                  <div className="h-36 rounded-2xl border border-white/30 bg-white/10 mb-3 flex items-center justify-center text-sm text-white/60">
+                    预留封面
                   </div>
-                  <div className="flex gap-2">
-                    {centerProject.github && (
-                      <a
-                        href={centerProject.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-white hover:underline"
-                      >
-                        GitHub
-                      </a>
-                    )}
-                    {centerProject.link && (
-                      <a
-                        href={centerProject.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-white hover:underline"
-                      >
-                        访问
-                      </a>
-                    )}
-                  </div>
-                </GlassCard>
+                  <GlassCard className="-mt-6 bg-gradient-to-br from-purple-500/30 to-pink-500/30 pt-10">
+                    <h4 className="font-bold text-lg mb-2">{centerProject.project_name}</h4>
+                    <p className="text-sm mb-3">{centerProject.description}</p>
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      {centerProject.tech_stack.map((tech, i) => (
+                        <span key={i} className="px-2 py-0.5 bg-white/20 rounded text-xs">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex gap-3 text-sm text-white">
+                      {centerProject.github && (
+                        <a href={centerProject.github} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          GitHub
+                        </a>
+                      )}
+                      {centerProject.link && (
+                        <a href={centerProject.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          访问
+                        </a>
+                      )}
+                    </div>
+                  </GlassCard>
+                </div>
               </motion.div>
             )}
           </div>
@@ -212,4 +202,3 @@ export default function DevelopmentSection({ data }: DevelopmentSectionProps) {
     </section>
   );
 }
-

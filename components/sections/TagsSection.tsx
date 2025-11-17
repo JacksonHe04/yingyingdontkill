@@ -39,12 +39,13 @@ export default function TagsSection({ data }: TagsSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold mb-12 text-center"
+          className="text-4xl font-bold mb-4 text-center"
         >
           标签墙
         </motion.h2>
+        <p className="text-center text-sm text-gray-500 mb-8">点亮标签表示你与缨缨观点同频</p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 auto-rows-[140px]">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {allTags.map((tag, idx) => (
             <motion.button
               key={idx}
@@ -53,7 +54,7 @@ export default function TagsSection({ data }: TagsSectionProps) {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.02 }}
               onClick={() => toggleTag(tag)}
-              className={`flex h-full flex-col justify-between rounded-2xl border px-4 py-3 text-left transition-all ${
+              className={`flex flex-col justify-between rounded-xl border px-3 py-2 text-left text-sm transition-all ${
                 activeTags.has(tag)
                   ? 'border-purple-400 bg-gradient-to-br from-purple-500/30 to-pink-500/20 text-white shadow-lg shadow-purple-300/40'
                   : 'border-white/40 bg-white/40 backdrop-blur text-gray-700 hover:border-purple-200 hover:shadow-lg'
@@ -64,7 +65,7 @@ export default function TagsSection({ data }: TagsSectionProps) {
               <span className="text-[10px] uppercase tracking-wide text-gray-400">
                 Tag {String(idx + 1).padStart(2, '0')}
               </span>
-              <p className="text-lg font-semibold leading-tight">{tag}</p>
+              <p className="font-semibold leading-tight truncate">{tag}</p>
               {activeTags.has(tag) && (
                 <span className="text-xs text-purple-200">已点亮</span>
               )}

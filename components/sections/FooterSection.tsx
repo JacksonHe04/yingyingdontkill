@@ -5,19 +5,42 @@ import GlassCard from '../GlassCard';
 
 export default function FooterSection() {
   const [visitCount, setVisitCount] = useState(0);
-  const [uptime, setUptime] = useState('');
+  const [uptime, setUptime] = useState('0 秒');
+  const visitStorageKey = 'yingying-visit-count';
 
   useEffect(() => {
-    // 模拟访问次数（实际应该从后端获取）
-    setVisitCount(Math.floor(Math.random() * 10000) + 1000);
-    
-    // 计算运行时长（从某个固定日期开始）
-    const startDate = new Date('2024-01-01');
-    const now = new Date();
-    const diffTime = Math.abs(now.getTime() - startDate.getTime());
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    setUptime(`${diffDays} 天`);
+    if (typeof window === 'undefined') return;
+    const stored = Number(window.localStorage.getItem(visitStorageKey) ?? '0');
+    const nextCount = stored + 1;
+    setVisitCount(nextCount);
+    window.localStorage.setItem(visitStorageKey, String(nextCount));
+  }, [visitStorageKey]);
+
+  useEffect(() => {
+    const start = Date.now();
+    const tick = () => {
+      const diff = Date.now() - start;
+      setUptime(formatDuration(diff));
+    };
+    tick();
+    const interval = setInterval(tick, 1000);
+    return () => clearInterval(interval);
   }, []);
+
+  const formatDuration = (ms: number) => {
+    const totalSeconds = Math.floor(ms / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    if (days > 0) {
+      return `${days} 天 ${hours} 小时 ${minutes} 分`;
+    }
+    if (hours > 0) {
+      return `${hours} 小时 ${minutes} 分 ${seconds} 秒`;
+    }
+    return `${minutes} 分 ${seconds} 秒`;
+  };
 
   const techStack = ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Three.js', 'Framer Motion'];
   const designConcept = '用创新的交互方式，让信息在视觉美感中自然流动。';
@@ -75,4 +98,3 @@ export default function FooterSection() {
     </footer>
   );
 }
-

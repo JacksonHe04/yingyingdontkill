@@ -31,11 +31,10 @@ export default function ExperienceSection({ data }: ExperienceSectionProps) {
               transition={{ delay: idx * 0.1 }}
             >
               <GlassCard>
-                <div className="aspect-video bg-gradient-to-br from-purple-400 to-pink-400 rounded-lg mb-4 flex items-center justify-center">
-                  <span className="text-4xl font-bold text-white">{exp.city}</span>
-                </div>
-                <div className="text-sm text-gray-500 mb-2">{exp.date}</div>
-                <p className="text-gray-700 dark:text-gray-300">{exp.description}</p>
+                <div className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-1">{exp.city}</div>
+                <div className="text-sm text-gray-500 mb-4">{exp.date}</div>
+                <div className="h-32 rounded-2xl border border-dashed border-white/40 bg-white/5" />
+                <p className="mt-4 text-gray-700 dark:text-gray-300">{exp.description}</p>
               </GlassCard>
             </motion.div>
           ))}
@@ -44,4 +43,3 @@ export default function ExperienceSection({ data }: ExperienceSectionProps) {
     </section>
   );
 }
-

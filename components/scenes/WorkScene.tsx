@@ -5,9 +5,11 @@ import type { ReadmeData } from '@/types';
 
 interface WorkSceneProps {
   jobs: ReadmeData['work']['jobs'];
+  onSelectJob: (job: ReadmeData['work']['jobs'][number]) => void;
+  activeJobId?: string;
 }
 
-export default function WorkScene({ jobs }: WorkSceneProps) {
+export default function WorkScene({ jobs, onSelectJob, activeJobId }: WorkSceneProps) {
   return (
     <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 p-6 text-white shadow-inner shadow-emerald-900/50">
       <div className="pointer-events-none absolute inset-0 opacity-70">
@@ -26,12 +28,10 @@ export default function WorkScene({ jobs }: WorkSceneProps) {
       <div className="relative z-10 space-y-3">
         <p className="text-sm uppercase tracking-[0.4em] text-emerald-100/70">Career Arcade</p>
         <h3 className="text-2xl font-semibold">2D 工作闯关 · 项目任务场景</h3>
-        <p className="text-sm text-emerald-50/80">
-          每一段履历是一张任务卡，解锁技能与产出。
-        </p>
+        <p className="text-sm text-emerald-50/80">每次点击即可唤出详细的履历任务卡。</p>
       </div>
 
-  <div className="relative mt-8 h-64">
+      <div className="relative mt-8 h-64">
         <div className="absolute inset-0 rounded-3xl border border-white/10" />
 
         {/* scrolling grid */}
@@ -43,16 +43,22 @@ export default function WorkScene({ jobs }: WorkSceneProps) {
 
         <div className="relative flex h-full items-end justify-between gap-4 px-6">
           {jobs.map((job, idx) => (
-            <motion.div
+            <motion.button
               key={`${job.company_name}-${idx}`}
-              className="relative flex w-full max-w-xs flex-col items-center"
+              type="button"
+              className="relative flex w-full max-w-xs flex-col items-center focus:outline-none"
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.12 }}
+              onClick={() => onSelectJob(job)}
             >
               <motion.div
-                className="relative mb-4 h-24 w-full rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-400 p-4 shadow-[0_15px_35px_rgba(6,182,212,0.35)]"
+                className={`relative mb-4 h-24 w-full rounded-2xl p-4 shadow-[0_15px_35px_rgba(6,182,212,0.35)] ${
+                  activeJobId === job.company_name
+                    ? 'bg-gradient-to-r from-cyan-400 to-emerald-400'
+                    : 'bg-gradient-to-r from-emerald-400 to-cyan-400'
+                }`}
                 whileHover={{ translateY: -6 }}
               >
                 <p className="text-xs uppercase tracking-widest text-emerald-50/70">
@@ -65,23 +71,15 @@ export default function WorkScene({ jobs }: WorkSceneProps) {
               </motion.div>
               <div className="w-2 rounded-full bg-gradient-to-b from-emerald-300 to-emerald-500 py-6" />
               <div className="mt-2 w-full rounded-xl bg-white/5 p-3 text-sm text-emerald-50/80">
-                <p className="font-semibold text-emerald-50">任务：{job.products_responsible_for || '创意探索'}</p>
+                <p className="font-semibold text-emerald-50">
+                  任务：{job.products_responsible_for || '创意探索'}
+                </p>
                 <p className="mt-1 line-clamp-2 text-xs">{job.job_summary || '待补充内容'}</p>
               </div>
-            </motion.div>
+            </motion.button>
           ))}
         </div>
-
-        {/* hoverable player */}
-        <motion.div
-          className="absolute bottom-6 left-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-400 text-2xl shadow-xl shadow-orange-500/50"
-          animate={{ x: ['0%', '75%'], y: [0, -6, 0] }}
-          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          🚀
-        </motion.div>
       </div>
     </div>
   );
 }
-

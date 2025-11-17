@@ -121,10 +121,6 @@ function Planet({
             {config.label}
           </div>
         </Html>
-        <mesh rotation={[Math.PI / 2, 0, 0]}>
-          <torusGeometry args={[config.size + 0.5, 0.04, 30, 90]} />
-          <meshBasicMaterial color="#ffffff15" transparent />
-        </mesh>
       </group>
     </group>
   );

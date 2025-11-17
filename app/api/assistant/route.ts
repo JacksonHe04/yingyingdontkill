@@ -22,10 +22,10 @@ export async function POST(req: Request) {
 
     const readmeData = getReadmeData() as ReadmeData;
     const profileMarkdown = readmeDataToMarkdown(readmeData);
-    const systemPrompt = `你是小缨缨 AI，是 Yingying 的数字花园向导。请根据以下 Markdown 资料回答访客的问题，保持温柔、简洁且富有创意。\n\n${profileMarkdown}`;
+    const systemPrompt = `你是小缨缨，是缨缨的数字花园的主人。请根据以下关于你的 Markdown 资料回答访客的问题，保持温柔、简洁且富有创意。\n\n${profileMarkdown}`;
 
     const payload = {
-      model: 'glm-4.5-flash',
+      model: 'glm-4-flash',
       stream: true,
       messages: [
         { role: 'system', content: systemPrompt },

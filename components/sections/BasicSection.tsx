@@ -10,8 +10,8 @@ interface BasicSectionProps {
 
 export default function BasicSection({ data }: BasicSectionProps) {
   return (
-    <section id="basic" className="min-h-screen flex items-center justify-center py-20 px-4">
-      <div className="max-w-4xl w-full space-y-8">
+    <section id="basic" className="py-24 px-4">
+      <div className="max-w-4xl mx-auto w-full space-y-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -72,4 +72,3 @@ export default function BasicSection({ data }: BasicSectionProps) {
     </section>
   );
 }
-

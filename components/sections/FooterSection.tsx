@@ -17,7 +17,8 @@ export default function FooterSection() {
   }, [visitStorageKey]);
 
   useEffect(() => {
-    const start = Date.now();
+    // 从指定日期时间开始计时：Nov 12, 2025, 4:01:29 AM GMT+8
+    const start = new Date('Nov 12, 2025, 4:01:29 AM GMT+8').getTime();
     const tick = () => {
       const diff = Date.now() - start;
       setUptime(formatDuration(diff));
@@ -34,7 +35,7 @@ export default function FooterSection() {
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
     if (days > 0) {
-      return `${days} 天 ${hours} 小时 ${minutes} 分`;
+      return `${days} 天 ${hours} 小时 ${minutes} 分 ${seconds} 秒`;
     }
     if (hours > 0) {
       return `${hours} 小时 ${minutes} 分 ${seconds} 秒`;

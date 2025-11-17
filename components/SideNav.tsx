@@ -66,7 +66,7 @@ export default function SideNav() {
       style={{ top: 'calc(50% + 40px)' }}
     >
       <div className="rounded-2xl border border-white/30 bg-white/30 backdrop-blur-xl p-4">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-0">
           {sections.map((section) => (
             <button
               key={section.id}

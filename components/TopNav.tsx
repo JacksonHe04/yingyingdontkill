@@ -182,7 +182,6 @@ export default function TopNav({ data }: TopNavProps) {
                   <span className="flex items-center gap-1 text-xs lg:text-sm font-medium">
                     <MapPin className="h-3 w-3 text-green-500" />
                     {data.life.current_city}
-                    <span className="ml-1 text-[10px] text-blue-500">点击查看</span>
                   </span>
                   {distance !== null && (
                     <span className="text-xs text-gray-500">距离约 {distance}km</span>

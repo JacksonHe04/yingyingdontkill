@@ -3,41 +3,31 @@
 一个围绕“自我叙事 + 创作档案”的沉浸式数字花园。通过数据驱动的内容结构、毛玻璃视觉、3D 场景与 AI 小缨缨助手，展示缨缨在生活、学习、产品、音乐与思考层面的完整画像。
 
 ## 界面预览
+<!-- 主页叙事区 -->
+| 主页叙事区 |
+| --- |
+| ![主页叙事区](docs/images/desktop-home.png) |
 
-<!-- 主页叙事区：单图，整行居中且行容器占满宽度 -->
-<div style="display:flex; width:100%; box-sizing:border-box; justify-content:center; align-items:center; gap:0; margin:12px 0; text-align:center;">
-  <img src="docs/images/desktop-home.png" alt="主页叙事区" style="height:626px">
-</div>
+<!-- 问答（每对问答在同一行） -->
+| 提问 | 回答 |
+| --- | --- |
+| ![兴趣爱好提问](docs/images/desktop-hobby-ask.png) | ![兴趣爱好回答](docs/images/desktop-hobby-anwser.png) |
+| ![MBTI匹配提问](docs/images/desktop-mbti-ask.png) | ![MBTI匹配问答](docs/images/desktop-mbti-anwser.png) |
 
-<!-- 问答：每对问答同一行，整行居中，占满宽度 -->
-<div style="display:flex; width:100%; box-sizing:border-box; justify-content:center; align-items:flex-start; gap:12px; margin:12px 0; text-align:center; flex-wrap:nowrap;">
-  <img src="docs/images/desktop-hobby-ask.png" alt="兴趣爱好提问" style="height:310px">
-  <img src="docs/images/desktop-hobby-anwser.png" alt="兴趣爱好回答" style="height:310px">
-</div>
+<!-- 移动端（4张在同一行） -->
+| 移动端首页 | 移动端菜单 | 移动端问答 | 移动端星系 |
+| --- | --- | --- | --- |
+| ![移动端首页](docs/images/mobile-home.png) | ![移动端菜单](docs/images/mobile-menu.png) | ![移动端问答](docs/images/mobile-ask.png) | ![移动端星系](docs/images/mobile-galaxy.png) |
 
-<div style="display:flex; width:100%; box-sizing:border-box; justify-content:center; align-items:flex-start; gap:12px; margin:12px 0; text-align:center; flex-wrap:nowrap;">
-  <img src="docs/images/desktop-mbti-ask.png" alt="MBTI匹配提问" style="height:310px">
-  <img src="docs/images/desktop-mbti-anwser.png" alt="MBTI匹配问答" style="height:310px">
-</div>
+<!-- 卡片（最后4张分2行，每行2张） -->
+| 音乐卡片 | 电影卡片 |
+| --- | --- |
+| ![音乐卡片](docs/images/desktop-music.png) | ![电影卡片](docs/images/desktop-desk.png) |
 
-<!-- 移动端：4张图片同一行，整行居中，占满宽度 -->
-<div style="display:flex; width:100%; box-sizing:border-box; justify-content:center; align-items:flex-start; margin:12px 0; text-align:center; flex-wrap:nowrap;">
-  <img src="docs/images/mobile-home.png" alt="移动端首页" style="height:485px;">
-  <img src="docs/images/mobile-menu.png" alt="移动端菜单" style="height:485px;">
-  <img src="docs/images/mobile-ask.png" alt="移动端问答" style="height:485px;">
-  <img src="docs/images/mobile-galaxy.png" alt="移动端星系" style="height:485px;">
-</div>
+| 标签墙 | 进入深水区 |
+| --- | --- |
+| ![标签墙](docs/images/desktop-label.png) | ![进入深水区](docs/images/desktop-into-deepwater.png) |
 
-<!-- 卡片：最后4张分两行，每行2个，整行居中，占满宽度 -->
-<div style="display:flex; width:100%; box-sizing:border-box; justify-content:center; align-items:flex-start; gap:12px; margin:12px 0; text-align:center; flex-wrap:nowrap;">
-  <img src="docs/images/desktop-music.png" alt="音乐卡片" style="height:310px">
-  <img src="docs/images/desktop-desk.png" alt="电影卡片" style="height:310px">
-</div>
-
-<div style="display:flex; width:100%; box-sizing:border-box; justify-content:center; align-items:flex-start; gap:12px; margin:12px 0; text-align:center; flex-wrap:nowrap;">
-  <img src="docs/images/desktop-label.png" alt="标签墙" style="height:310px">
-  <img src="docs/images/desktop-into-deepwater.png" alt="进入深水区" style="height:310px">
-</div>
 
 ## 项目亮点
 

@@ -80,15 +80,17 @@ export default function ReadingSection({ data }: ReadingSectionProps) {
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                     {book.comment}
                   </p>
-                  <a
-                    href={book.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-blue-400 hover:underline"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    查看详情 →
-                  </a>
+                  {book.link && book.link.trim() !== '' && (
+                    <a
+                      href={book.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-blue-400 hover:underline"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      查看详情 →
+                    </a>
+                  )}
                 </GlassCard>
               </motion.div>
             ))}
@@ -106,14 +108,16 @@ export default function ReadingSection({ data }: ReadingSectionProps) {
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                   {author.comment}
                 </p>
-                <a
-                  href={author.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-blue-400 hover:underline"
-                >
-                  查看详情 →
-                </a>
+                {author.link && author.link.trim() !== '' && (
+                  <a
+                    href={author.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-blue-400 hover:underline"
+                  >
+                    查看详情 →
+                  </a>
+                )}
               </GlassCard>
             ))}
           </div>
@@ -128,7 +132,7 @@ export default function ReadingSection({ data }: ReadingSectionProps) {
                 {selectedBook.author} · {selectedBook.country}
               </p>
               <p className="text-gray-700 mb-4">{selectedBook.description}</p>
-              {selectedBook.link && (
+              {selectedBook.link && selectedBook.link.trim() !== '' && (
                 <a
                   href={selectedBook.link}
                   target="_blank"

@@ -199,7 +199,7 @@ export default function ProductsSection({ data }: ProductsSectionProps) {
               <h3 className="text-2xl font-bold mb-2 text-gray-900">{selectedProduct.title}</h3>
               <p className="text-sm text-gray-600 mb-3">{selectedProduct.tags?.join(' · ')}</p>
               <p className="text-gray-700 mb-4">{selectedProduct.description}</p>
-              {selectedProduct.link && (
+              {selectedProduct.link && selectedProduct.link.trim() !== '' && (
                 <a
                   href={selectedProduct.link}
                   target="_blank"

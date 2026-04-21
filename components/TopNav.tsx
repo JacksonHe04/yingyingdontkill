@@ -280,7 +280,7 @@ export default function TopNav({ data }: TopNavProps) {
             </div>
 
             <motion.div
-              className="relative flex-shrink-0 absolute inset-x-0 flex justify-center pointer-events-none sm:pointer-events-auto sm:static sm:w-auto sm:flex-none"
+              className="flex-shrink-0 absolute inset-x-0 flex justify-center pointer-events-none sm:pointer-events-auto sm:static sm:w-auto sm:flex-none"
               onHoverStart={() => setIsHovered(true)}
               onHoverEnd={() => setIsHovered(false)}
               onClick={handleIslandClick}

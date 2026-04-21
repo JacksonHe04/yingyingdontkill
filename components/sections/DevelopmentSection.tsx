@@ -105,12 +105,12 @@ export default function DevelopmentSection({ data }: DevelopmentSectionProps) {
                         ))}
                       </div>
                       <div className="flex gap-3 text-xs text-blue-400">
-                        {project.github && (
+                        {project.github && project.github.trim() !== '' && (
                           <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:underline">
                             GitHub
                           </a>
                         )}
-                        {project.link && (
+                        {project.link && project.link.trim() !== '' && (
                           <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
                             访问
                           </a>
@@ -145,12 +145,12 @@ export default function DevelopmentSection({ data }: DevelopmentSectionProps) {
                       ))}
                     </div>
                     <div className="flex gap-3 text-sm text-white">
-                      {centerProject.github && (
+                      {centerProject.github && centerProject.github.trim() !== '' && (
                         <a href={centerProject.github} target="_blank" rel="noopener noreferrer" className="hover:underline">
                           GitHub
                         </a>
                       )}
-                      {centerProject.link && (
+                      {centerProject.link && centerProject.link.trim() !== '' && (
                         <a href={centerProject.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
                           访问
                         </a>
@@ -186,14 +186,16 @@ export default function DevelopmentSection({ data }: DevelopmentSectionProps) {
                       ))}
                     </div>
                   </div>
-                  <a
-                    href={tool.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ml-4 text-blue-400 hover:underline"
-                  >
-                    访问 →
-                  </a>
+                  {tool.link && (
+                    <a
+                      href={tool.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-4 text-blue-400 hover:underline"
+                    >
+                      访问 →
+                    </a>
+                  )}
                 </div>
               </GlassCard>
             ))}

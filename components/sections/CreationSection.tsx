@@ -58,7 +58,7 @@ function renderCategoryContent(activeCategory: string, data: ReadmeData['creatio
                 <div className="text-sm text-gray-500 mb-2">{video.series}</div>
                 <h4 className="font-semibold mb-2">{video.title}</h4>
                 <div className="flex gap-2">
-                  {video.video_link && (
+                  {video.video_link && video.video_link.trim() !== '' && (
                     <a
                       href={video.video_link}
                       target="_blank"
@@ -68,7 +68,7 @@ function renderCategoryContent(activeCategory: string, data: ReadmeData['creatio
                       视频 →
                     </a>
                   )}
-                  {video.podcast_link && (
+                  {video.podcast_link && video.podcast_link.trim() !== '' && (
                     <a
                       href={video.podcast_link}
                       target="_blank"
@@ -92,14 +92,16 @@ function renderCategoryContent(activeCategory: string, data: ReadmeData['creatio
               <GlassCard key={article.title} hover>
                 <h4 className="font-semibold mb-2">{article.title}</h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{article.excerpt}</p>
-                <a
-                  href={article.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-blue-400 hover:underline"
-                >
-                  阅读全文 →
-                </a>
+                {article.link && article.link.trim() !== '' && (
+                  <a
+                    href={article.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-blue-400 hover:underline"
+                  >
+                    阅读全文 →
+                  </a>
+                )}
               </GlassCard>
             ))}
           </div>
@@ -113,7 +115,7 @@ function renderCategoryContent(activeCategory: string, data: ReadmeData['creatio
               <GlassCard key={speech.speech_name} hover>
                 <h4 className="font-semibold mb-2">{speech.speech_name}</h4>
                 <div className="flex flex-wrap gap-2">
-                  {speech.link && (
+                  {speech.link && speech.link.trim() !== '' && (
                     <a
                       href={speech.link}
                       target="_blank"
@@ -123,7 +125,7 @@ function renderCategoryContent(activeCategory: string, data: ReadmeData['creatio
                       演示文稿 →
                     </a>
                   )}
-                  {speech.outline_doc && (
+                  {speech.outline_doc && speech.outline_doc.trim() !== '' && (
                     <a
                       href={speech.outline_doc}
                       target="_blank"
@@ -133,7 +135,7 @@ function renderCategoryContent(activeCategory: string, data: ReadmeData['creatio
                       大纲文档 →
                     </a>
                   )}
-                  {speech.presentation_link && (
+                  {speech.presentation_link && speech.presentation_link.trim() !== '' && (
                     <a
                       href={speech.presentation_link}
                       target="_blank"

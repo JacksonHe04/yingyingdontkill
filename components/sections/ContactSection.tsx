@@ -48,7 +48,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
                         发送 →
                       </a>
                     )}
-                    {info.method_name === '个人网站' && (
+                    {info.method_name === '个人网站' && info.content.trim() !== '' && (
                       <a
                         href={info.content}
                         target="_blank"
@@ -82,14 +82,16 @@ export default function ContactSection({ data }: ContactSectionProps) {
                         </div>
                       </div>
                     </div>
-                    <a
-                      href={platform.homepage_link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:underline"
-                    >
-                      访问 →
-                    </a>
+                    {platform.homepage_link && platform.homepage_link.trim() !== '' && (
+                      <a
+                        href={platform.homepage_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:underline"
+                      >
+                        访问 →
+                      </a>
+                    )}
                   </div>
                 </GlassCard>
               ))}

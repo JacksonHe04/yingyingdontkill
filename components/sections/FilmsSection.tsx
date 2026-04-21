@@ -80,15 +80,17 @@ export default function FilmsSection({ data }: FilmsSectionProps) {
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                     {film.comment}
                   </p>
-                  <a
-                    href={film.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-blue-400 hover:underline"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    查看详情 →
-                  </a>
+                  {film.link && film.link.trim() !== '' && (
+                    <a
+                      href={film.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-blue-400 hover:underline"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      查看详情 →
+                    </a>
+                  )}
                 </GlassCard>
               </motion.div>
             ))}
@@ -106,14 +108,16 @@ export default function FilmsSection({ data }: FilmsSectionProps) {
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                   {director.comment}
                 </p>
-                <a
-                  href={director.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-blue-400 hover:underline"
-                >
-                  查看详情 →
-                </a>
+                {director.link && director.link.trim() !== '' && (
+                  <a
+                    href={director.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-blue-400 hover:underline"
+                  >
+                    查看详情 →
+                  </a>
+                )}
               </GlassCard>
             ))}
           </div>
@@ -127,7 +131,7 @@ export default function FilmsSection({ data }: FilmsSectionProps) {
                 {selectedFilm.director} · {selectedFilm.country}
               </p>
               <p className="text-gray-700 mb-4">{selectedFilm.description}</p>
-              {selectedFilm.link && (
+              {selectedFilm.link && selectedFilm.link.trim() !== '' && (
                 <a
                   href={selectedFilm.link}
                   target="_blank"

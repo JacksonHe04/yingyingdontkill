@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { getReadmeData } from '@/lib/utils';
+import { getReadmeData } from '@/lib/content';
 import './globals.css';
 
 const geistSans = Geist({
@@ -13,17 +13,21 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-const siteMeta = getReadmeData().meta;
+export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  title: siteMeta.title,
-  description: siteMeta.description,
-  authors: [{ name: siteMeta.author }],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const siteMeta = (await getReadmeData()).meta;
+
+  return {
     title: siteMeta.title,
     description: siteMeta.description,
-  },
-};
+    authors: [{ name: siteMeta.author }],
+    openGraph: {
+      title: siteMeta.title,
+      description: siteMeta.description,
+    },
+  };
+}
 
 export default function RootLayout({
   children,

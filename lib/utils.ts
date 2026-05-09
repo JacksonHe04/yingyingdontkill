@@ -1,11 +1,3 @@
-import { ReadmeData } from '@/types';
-import readmeData from '@/data/readme.json';
-
-// 读取数据
-export function getReadmeData(): ReadmeData {
-  return readmeData as ReadmeData;
-}
-
 // 计算年龄
 export function calculateAge(birthDate: string): number {
   const today = new Date();

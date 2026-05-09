@@ -1,6 +1,4 @@
-'use client';
-
-import { getReadmeData } from '@/lib/utils';
+import { getReadmeData } from '@/lib/content';
 import TopNav from '@/components/TopNav';
 import SideNav from '@/components/SideNav';
 import BasicSection from '@/components/sections/BasicSection';
@@ -23,8 +21,10 @@ import FooterSection from '@/components/sections/FooterSection';
 import DeepWaterSection from '@/components/sections/DeepWaterSection';
 import { AnimatedGradientBackground } from '@/components/BackGround';
 
-export default function Home() {
-  const data = getReadmeData();
+export const dynamic = 'force-dynamic';
+
+export default async function Home() {
+  const data = await getReadmeData();
 
   return (
     <main className="relative min-h-screen">

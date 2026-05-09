@@ -5,19 +5,52 @@ import { motion } from 'framer-motion';
 import GlassCard from '../GlassCard';
 
 export default function MessageSection() {
+  const [nickname, setNickname] = useState('');
   const [message, setMessage] = useState('');
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [contact, setContact] = useState('');
+  const [status, setStatus] = useState<'idle' | 'success' | 'error' | 'submitting'>('idle');
+  const [feedback, setFeedback] = useState('');
 
   const quickGreetings = ['你好！', '很高兴认识你！', '期待交流！', '祝好！'];
 
-  const handleSubmit = () => {
-    if (!message.trim() || !email.trim()) {
+  const handleSubmit = async () => {
+    if (!message.trim()) {
       setStatus('error');
+      setFeedback('请填写留言内容');
       return;
     }
-    setStatus('success');
-    setMessage('');
+
+    setStatus('submitting');
+    setFeedback('');
+
+    try {
+      const response = await fetch('/api/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nickname,
+          contact,
+          content: message,
+        }),
+      });
+
+      const result = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        setStatus('error');
+        setFeedback(result.error || '发送失败，请稍后再试');
+        return;
+      }
+
+      setStatus('success');
+      setFeedback('已收到，留言会在审核后展示。');
+      setMessage('');
+      setContact('');
+      setNickname('');
+    } catch {
+      setStatus('error');
+      setFeedback('发送失败，请稍后再试');
+    }
   };
 
   return (
@@ -59,13 +92,25 @@ export default function MessageSection() {
               <h3 className="text-xl font-semibold mb-4">直接留言</h3>
               <div className="space-y-4">
                 <input
-                  type="email"
-                  value={email}
+                  type="text"
+                  value={nickname}
                   onChange={(e) => {
-                    setEmail(e.target.value);
+                    setNickname(e.target.value);
                     setStatus('idle');
+                    setFeedback('');
                   }}
-                  placeholder="你的邮箱（便于回复）"
+                  placeholder="你的称呼（可选）"
+                  className="w-full rounded-xl border border-gray-200 bg-white/70 px-4 py-2 text-sm focus:border-purple-400 focus:outline-none"
+                />
+                <input
+                  type="text"
+                  value={contact}
+                  onChange={(e) => {
+                    setContact(e.target.value);
+                    setStatus('idle');
+                    setFeedback('');
+                  }}
+                  placeholder="你的邮箱 / 社媒 / 其他联系方式（可选）"
                   className="w-full rounded-xl border border-gray-200 bg-white/70 px-4 py-2 text-sm focus:border-purple-400 focus:outline-none"
                 />
                 <textarea
@@ -73,22 +118,24 @@ export default function MessageSection() {
                   onChange={(e) => {
                     setMessage(e.target.value);
                     setStatus('idle');
+                    setFeedback('');
                   }}
                   placeholder="写下你想说的话..."
                   className="w-full h-32 rounded-2xl border border-gray-200 bg-white/70 px-4 py-3 text-sm focus:border-purple-400 focus:outline-none resize-none"
                 />
                 <div className="flex items-center justify-between">
                   {status === 'error' && (
-                    <span className="text-xs text-red-500">请填写邮箱和留言内容</span>
+                    <span className="text-xs text-red-500">{feedback}</span>
                   )}
                   {status === 'success' && (
-                    <span className="text-xs text-emerald-500">已收到！谢谢你的分享。</span>
+                    <span className="text-xs text-emerald-500">{feedback}</span>
                   )}
                   <button
                     onClick={handleSubmit}
+                    disabled={status === 'submitting'}
                     className="ml-auto rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-2 text-white text-sm shadow-lg hover:shadow-xl transition"
                   >
-                    发送
+                    {status === 'submitting' ? '发送中...' : '发送'}
                   </button>
                 </div>
               </div>

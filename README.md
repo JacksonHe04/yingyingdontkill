@@ -31,7 +31,7 @@
 
 ## 项目亮点
 
-- 数据即内容：所有文案、列表、标签都来自 `data/readme.json`，可离线维护完整的“数字自传”。
+- 数据即内容：运行时内容全部来自 Supabase，`data/readme.json` 仅保留为导入源和备份快照。
 - 超过 15 个主题分区：基础信息、生活方式、经历教育、职业偏好、开发项目、产品好物、阅读观影、音乐与嘻哈、活动记录、标签墙、联系卡片、留言板以及彩蛋式深水区。
 - 沉浸式视觉体验：Canvas 动态渐变背景、毛玻璃卡片（`GlassCard`）、视差滚动和 Framer Motion 过渡让信息层级一目了然。
 - 三维交互：基于 React Three Fiber / drei 的 Product Desk、Creation Galaxy、Reading/Film Desk、Deep Space 等专属场景。
@@ -62,7 +62,7 @@
 - **样式**：Tailwind CSS 4（原子级 `@import "tailwindcss"` + `@theme inline`）
 - **三维 & 动画**：React Three Fiber、@react-three/drei、Framer Motion
 - **图标**：lucide-react
-- **数据**：本地 JSON (`data/readme.json`) + TypeScript 类型守护 (`types/index.ts`)
+- **数据**：Supabase Postgres + Supabase Storage + TypeScript 类型守护 (`types/index.ts`)
 
 ## 项目结构
 
@@ -78,7 +78,9 @@ yingyingdontkill
 │   ├── GlassCard.tsx / Modal.tsx  # 设计系统组件
 │   ├── sections/*                 # 功能分区
 │   └── scenes/*                   # React Three Fiber 场景
-├── data/readme.json               # 单一事实来源（内容）
+├── data/readme.json               # 导入源 / 备份快照
+├── supabase/*                     # schema、migrations、Supabase 配置
+├── scripts/*                      # 导库、校验、上传资产、seed 管理员脚本
 ├── lib
 │   ├── markdown.ts                # 将档案转 Markdown（AI prompt 用）
 │   └── utils.ts                   # 年龄/距离/滚动等工具函数
@@ -90,9 +92,9 @@ yingyingdontkill
 
 ## 数据驱动内容
 
-- `data/readme.json` 覆盖基础、生活、教育、工作、项目、产品、创作、阅读、影视、音乐、嘻哈、活动、联系、深水区思想与通知等字段。
-- `types/index.ts` 对 JSON 结构提供静态约束，确保编辑内容时享受 IDE 自动补全。
-- 任何对内容的编辑都无需改动组件：更新 JSON → `pnpm dev` 自动热更新。
+- `data/readme.json` 覆盖基础、生活、教育、工作、项目、产品、创作、阅读、影视、音乐、嘻哈、活动、联系、深水区思想与通知等字段，并通过脚本导入 Supabase。
+- `types/index.ts` 继续作为前台兼容视图类型，便于组件在不重写的情况下消费数据库聚合结果。
+- 任何对内容的编辑都应通过 Supabase 后台或脚本完成，而不是直接修改运行时数据源。
 - 若需要新增城市以完成距离计算，请同步在 `lib/utils.ts` 的 `cityCoordinates` 中维护经纬度。
 
 ## 三维场景与动画
@@ -113,6 +115,9 @@ yingyingdontkill
 
 ```
 OPENAI_API_KEY=xxxxxxxxxxxxxxxx
+NEXT_PUBLIC_SUPABASE_URL=https://<project-ref>.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_xxx
+SUPABASE_SECRET_KEY=sb_secret_xxx
 ```
 
 若暂不启用 AI，可缺省该变量，前端会提示“服务不可用”并继续运行其他功能。
@@ -138,12 +143,13 @@ OPENAI_API_KEY=xxxxxxxxxxxxxxxx
 
 ## 内容更新流程
 
-1. 更新 `data/readme.json`，维持与 `types/index.ts` 一致的结构。
-2. 若增加新字段：
-   - 更新 `types/index.ts`。
-   - 在需要展示的 Section 中读取新字段。
-   - 如需被 AI 使用，记得同步修改 `lib/markdown.ts`。
-3. （可选）在 `docs/` 记录调研或脚本，用于后续版本的内容扩展。
+1. 通过 `/admin/content` 编辑内容，或更新 `data/readme.json` 后执行导入脚本。
+2. 如新增结构字段：
+   - 更新 Supabase migration
+   - 更新 `types/index.ts`
+   - 更新 `lib/content` 的查询/映射
+   - 如需被 AI 使用，更新 `lib/markdown.ts`
+3. 如有图片或文档资产，上传到 `/admin/assets` 或执行 `pnpm db:upload-assets`。
 
 ## 组件与设计规范
 
@@ -158,12 +164,12 @@ OPENAI_API_KEY=xxxxxxxxxxxxxxxx
 
 ## Roadmap / 待办
 
-- [ ] 将所有图片存储在云存储图床服务并给每张图片设唯一文件名，以便组件渲染时直接通过 JSON 中与该文件名一致的“name”类字段访问图片，无需额外新增存储文件名与链接对应的字段。
+- [x] 运行时内容迁移到 Supabase，支持后台 CMS、留言审核与资产上传。
 - [ ] 教育 & 工作区的 2D/3D 场景细化（目前为栅格占位，可迁移到 `components/scenes`）。
 - [ ] 深水区宇宙飞行器 / 互动彩蛋进一步打磨。
 - [ ] AI 问答接入记忆 / 多模型策略，并允许访客上传提问上下文。
-- [ ] 留言板后端化，支持邮件通知或数据库存档。
-- [ ] 统一的内容编辑面板（例如 CMS 或 CLI）以生成 `readme.json`。
+- [ ] 留言审核增加通知与反垃圾策略。
+- [ ] CMS 增加更细的资产引用和发布流。
 
 ## 部署提示
 

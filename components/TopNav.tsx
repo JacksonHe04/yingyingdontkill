@@ -32,7 +32,8 @@ const platformIconMap = {
 } as const;
 
 export default function TopNav({ data }: TopNavProps) {
-  const [currentTime, setCurrentTime] = useState(getCurrentTime());
+  const [currentTime, setCurrentTime] = useState('');
+  const [yearProgress, setYearProgress] = useState({ daysPassed: 0, totalDays: 0, percentage: 0 });
   const [distance, setDistance] = useState<number | null>(null);
   const [showNotifications, setShowNotifications] = useState(false);
   const [aiState, setAIState] = useState<'closed' | 'docked' | 'floating'>('closed');
@@ -48,10 +49,10 @@ export default function TopNav({ data }: TopNavProps) {
   const [showMobilePanel, setShowMobilePanel] = useState(false);
   const [notificationsViewed, setNotificationsViewed] = useState(0);
   const [isRefreshingLocation, setIsRefreshingLocation] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const notificationsStorageKey = 'yingying-notifications-viewed';
 
   const age = calculateAge(data.life.birth_date);
-  const yearProgress = getYearProgress();
   const cityCoords = getCityCoordinates(data.life.current_city);
   const shouldShowBadge = data.notifications.length > notificationsViewed;
 
@@ -63,11 +64,19 @@ export default function TopNav({ data }: TopNavProps) {
   };
 
   useEffect(() => {
+    setIsMounted(true);
+    setCurrentTime(getCurrentTime());
+    setYearProgress(getYearProgress());
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
     const timer = setInterval(() => {
       setCurrentTime(getCurrentTime());
+      setYearProgress(getYearProgress());
     }, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isMounted]);
 
   const updateUserLocation = useCallback(async () => {
     if (!cityCoords) return;
@@ -264,14 +273,14 @@ export default function TopNav({ data }: TopNavProps) {
                   <span className="flex items-center gap-2 text-xs lg:text-sm font-medium">
                     Lv.{age}
                     <span className="text-[10px] text-gray-500">
-                      {yearProgress.daysPassed}/{yearProgress.totalDays}
+                      {isMounted ? `${yearProgress.daysPassed}/${yearProgress.totalDays}` : ''}
                     </span>
                   </span>
                   <div className="w-28 lg:w-32 h-1.5 bg-gray-200/80 rounded-full overflow-hidden mt-1">
                     <motion.div
                       className="h-full bg-gradient-to-r from-green-500 to-teal-500"
                       initial={{ width: 0 }}
-                      animate={{ width: `${yearProgress.percentage}%` }}
+                      animate={{ width: isMounted ? `${yearProgress.percentage}%` : '0%' }}
                       transition={{ duration: 1 }}
                     />
                   </div>
@@ -402,7 +411,7 @@ export default function TopNav({ data }: TopNavProps) {
                 )}
               </button>
 
-              <div className="hidden md:block text-xs lg:text-sm font-mono">{currentTime}</div>
+              <div className="hidden md:block text-xs lg:text-sm font-mono">{isMounted ? currentTime : ''}</div>
             </div>
           </div>
         </div>
